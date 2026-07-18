@@ -35,22 +35,22 @@ export const defaultCatalog: Catalog = {
       src: '/videos/rings.mp4',
       name: 'Stack rings',
       tag: 'Jewelry',
-      price: 'From Rs. 199',
+      price: 'From Rs. 199'
     },
     {
       id: 'sr2',
       src: '/videos/gold.mp4',
       name: 'Gold-tone glow',
       tag: 'Accessories',
-      price: 'From Rs. 450',
+      price: 'From Rs. 450'
     },
     {
       id: 'sr3',
       src: '/videos/silver.mp4',
       name: 'Sparkle edit',
       tag: 'Gifts & more',
-      price: 'From Rs. 350',
-    },
+      price: 'From Rs. 350'
+    }
   ],
   bestsellers: [
     {
@@ -286,6 +286,97 @@ export const defaultCatalog: Catalog = {
       lowStockAt: 3,
       trackStock: true,
       isNew: true
+    },
+    {
+      id: 'p-ring15',
+      name: 'Rose gold knot ring',
+      meta: 'Rings',
+      price: 'From Rs. 299',
+      image: '/images/ring15.jpg',
+      active: true,
+      sku: 'RN-RING-015',
+      stock: 12,
+      lowStockAt: 4,
+      trackStock: true,
+      isNew: true
+    },
+    {
+      id: 'p-ring16',
+      name: 'Rose gold twist band',
+      meta: 'Rings',
+      price: 'From Rs. 279',
+      image: '/images/ring16.jpg',
+      active: true,
+      sku: 'RN-RING-016',
+      stock: 11,
+      lowStockAt: 4,
+      trackStock: true,
+      isNew: true
+    },
+    {
+      id: 'p-ring18',
+      name: 'Gold twist open ring',
+      meta: 'Rings',
+      price: 'From Rs. 259',
+      image: '/images/ring18.jpg',
+      active: true,
+      sku: 'RN-RING-018',
+      stock: 14,
+      lowStockAt: 4,
+      trackStock: true,
+      isNew: true
+    },
+    {
+      id: 'p-ring20',
+      name: 'Gold braided band ring',
+      meta: 'Rings',
+      price: 'From Rs. 249',
+      image: '/images/ring20.jpg',
+      active: true,
+      sku: 'RN-RING-020',
+      stock: 13,
+      lowStockAt: 4,
+      trackStock: true,
+      isNew: true
+    },
+    {
+      id: 'p-earing12',
+      name: 'Leaf swirl stud earrings',
+      meta: 'Earrings',
+      price: 'From Rs. 299',
+      image: '/images/earing12.jpg',
+      active: true,
+      sku: 'RN-EAR-012',
+      stock: 15,
+      lowStockAt: 4,
+      trackStock: true,
+      isNew: true
+    },
+    {
+      id: 'p-earing14',
+      name: 'Frosted ball drop earrings',
+      meta: 'Earrings',
+      price: 'From Rs. 229',
+      image: '/images/earing14.jpg',
+      active: true,
+      sku: 'RN-EAR-014',
+      stock: 16,
+      lowStockAt: 4,
+      trackStock: true,
+      isNew: true
+    },
+    {
+      id: 'p-earign15',
+      name: 'Leaf swirl studs (on ear)',
+      meta: 'Earrings',
+      price: 'From Rs. 299',
+      image: '/images/earign15.jpg',
+      active: true,
+      sku: 'RN-EAR-015',
+      stock: 12,
+      lowStockAt: 4,
+      trackStock: true,
+      isNew: true
     }
   ],
   categories: [
@@ -397,8 +488,7 @@ export const defaultCatalog: Catalog = {
     {
       id: 'act1',
       at: new Date().toISOString(),
-      message:
-        'Catalog updated with real product photos: rings, necklaces, earrings, bracelets, accessories',
+      message: "Added 7 new products: rings + earrings",
     },
   ],
 }
