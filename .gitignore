@@ -1,0 +1,40 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Deploy / local artifacts
+.vercel
+.deploy-parts
+.deploy-payload.json
+.deploy-payload-novideo.json
+.mcp-deploy-min.json
+deploy.sh
+*.tgz
+qa-artifacts
+
+# Unused video drafts (site uses hero/rings/gold/silver only)
+public/videos/grok-video-*.mp4
+public/videos/hero-previous.mp4
+public/videos/hero-skyelite-style.mp4
+public/videos/ref-frame-*.jpg
