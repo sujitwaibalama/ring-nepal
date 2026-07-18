@@ -75,8 +75,21 @@ export function HomeSections() {
     <>
       <ProductShowreel />
 
-      <div className="border-y border-line bg-blush px-5 py-4 text-center md:px-8">
-        <p className="text-sm text-ink-soft">{brand.deliveryNote}</p>
+      <div className="border-y border-line bg-blush px-5 py-5 md:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-3 text-center sm:flex-row sm:justify-between sm:text-left">
+          <p className="text-sm text-ink-soft">{brand.deliveryNote}</p>
+          <div className="flex flex-wrap items-center justify-center gap-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-ink/70">
+            <span className="rounded-full bg-white px-3 py-1 shadow-sm">
+              {brand.storeCount} stores
+            </span>
+            <span className="rounded-full bg-white px-3 py-1 shadow-sm">
+              WhatsApp order
+            </span>
+            <span className="rounded-full bg-white px-3 py-1 shadow-sm">
+              COD available
+            </span>
+          </div>
+        </div>
       </div>
 
       {/* New arrivals — digital window for drops (vs Instagram grid limits) */}
@@ -441,7 +454,7 @@ export function HomeSections() {
           <Reveal>
             <div className="mb-10 text-center">
               <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-pink">
-                Shop by type
+                Collections
               </p>
               <h2 className="mt-2 font-script text-4xl text-ink md:text-5xl">
                 Shop by type
@@ -489,8 +502,23 @@ export function HomeSections() {
           </p>
           <p className="mx-auto mt-5 max-w-md text-sm leading-relaxed text-white/65 md:text-base">
             Jewelry, beauty, perfume, gifts & cute finds — same vibe as{' '}
-            {brand.instagramHandle}. Visit a store or order on WhatsApp & Daraz.
+            {brand.instagramHandle}. Browse anytime, order on WhatsApp, or visit
+            a store to try pieces in person.
           </p>
+          <div className="mx-auto mt-8 flex max-w-lg flex-wrap items-center justify-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/80">
+            <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1.5">
+              {brand.storeCount} stores
+            </span>
+            <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1.5">
+              WhatsApp order
+            </span>
+            <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1.5">
+              Valley COD
+            </span>
+            <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1.5">
+              {brand.instagramHandle}
+            </span>
+          </div>
         </Reveal>
       </section>
 
