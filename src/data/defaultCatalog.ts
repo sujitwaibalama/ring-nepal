@@ -7,7 +7,7 @@ export const defaultCatalog: Catalog = {
   brand: {
     name: 'Ring Nepal',
     nameNp: 'Ring नेपाल',
-    tagline: 'Jewelry, beauty, perfume & cute gifts',
+    tagline: "Rings, necklaces, earrings & cute accessories",
     estd: '2024',
     city: 'Kathmandu',
     storeCount: 8,
@@ -27,8 +27,7 @@ export const defaultCatalog: Catalog = {
     eyebrow: '8 stores · Kathmandu & Lalitpur',
     line1: 'Pretty little things',
     line2: 'for every day & gifts',
-    subtitle:
-      'Rings & accessories, beauty, perfume, birthday gifts, dolls & more — same cute vibe as @rings.nepal. Browse online, order on WhatsApp, or visit a store.',
+    subtitle: "Rings, necklaces, earrings, bracelets, scarves & sunglasses — same cute vibe as @rings.nepal. Browse online, order on WhatsApp, or visit a store.",
   },
   showreel: [
     {
@@ -55,196 +54,351 @@ export const defaultCatalog: Catalog = {
   ],
   bestsellers: [
     {
-      id: 'p1',
-      name: 'Stack ring set',
-      meta: 'Jewelry',
+      id: 'p-ring4',
+      name: 'Floral gold ring',
+      meta: 'Rings',
       price: 'From Rs. 199',
-      // Same clip as showreel “Stack rings”
-      image: '/videos/rings.mp4',
+      image: '/images/ring4.jpg',
       active: true,
-      sku: 'RN-RING-001',
-      stock: 24,
+      sku: 'RN-RING-004',
+      stock: 15,
       lowStockAt: 5,
       trackStock: true,
-      isNew: false,
+      isNew: true
     },
     {
-      id: 'p2',
-      name: 'Rose statement ring',
-      meta: 'Jewelry',
-      price: 'From Rs. 350',
-      image: '/videos/silver.mp4',
+      id: 'p-ring6',
+      name: 'Daisy vine gold ring',
+      meta: 'Rings',
+      price: 'From Rs. 249',
+      image: '/images/ring6.jpg',
       active: true,
-      sku: 'RN-RING-002',
-      stock: 4,
-      lowStockAt: 5,
-      trackStock: true,
-      isNew: true,
-    },
-    {
-      id: 'p3',
-      name: 'Everyday gold bracelet',
-      meta: 'Accessories',
-      price: 'From Rs. 450',
-      image: '/videos/gold.mp4',
-      active: true,
-      sku: 'RN-ACC-001',
+      sku: 'RN-RING-006',
       stock: 12,
       lowStockAt: 5,
       trackStock: true,
-      isNew: true,
+      isNew: true
     },
     {
-      id: 'p4',
-      name: 'Soft glow beauty kit',
-      meta: 'Beauty',
-      price: 'From Rs. 499',
-      image: '/videos/silver.mp4',
+      id: 'p-ring9',
+      name: 'Leaf branch gold ring',
+      meta: 'Rings',
+      price: 'From Rs. 229',
+      image: '/images/ring9.jpg',
       active: true,
-      sku: 'RN-BEA-001',
-      stock: 18,
+      sku: 'RN-RING-009',
+      stock: 10,
       lowStockAt: 5,
       trackStock: true,
-      isNew: true,
+      isNew: false
     },
     {
-      id: 'p5',
-      name: 'Signature perfume mist',
-      meta: 'Perfume',
-      price: 'From Rs. 799',
-      image: '/videos/gold.mp4',
+      id: 'p-ring10',
+      name: 'Two-tone cross ring',
+      meta: 'Rings',
+      price: 'From Rs. 299',
+      image: '/images/ring10.jpg',
       active: true,
-      sku: 'RN-PRF-001',
-      stock: 10,
-      lowStockAt: 3,
-      trackStock: true,
-      isNew: true,
-    },
-    {
-      id: 'p6',
-      name: 'Birthday gift doll set',
-      meta: 'Gifts & dolls',
-      price: 'From Rs. 650',
-      image: '/videos/hero.mp4',
-      active: true,
-      sku: 'RN-GFT-001',
+      sku: 'RN-RING-010',
       stock: 8,
       lowStockAt: 3,
       trackStock: true,
-      isNew: false,
+      isNew: true
     },
+    {
+      id: 'p-ring13',
+      name: 'Silver swirl CZ ring',
+      meta: 'Rings',
+      price: 'From Rs. 279',
+      image: '/images/ring13.jpg',
+      active: true,
+      sku: 'RN-RING-013',
+      stock: 14,
+      lowStockAt: 5,
+      trackStock: true,
+      isNew: false
+    },
+    {
+      id: 'p-earing1',
+      name: 'Bow pearl drop earrings',
+      meta: 'Earrings',
+      price: 'From Rs. 199',
+      image: '/images/earing1.jpg',
+      active: true,
+      sku: 'RN-EAR-001',
+      stock: 20,
+      lowStockAt: 5,
+      trackStock: true,
+      isNew: true
+    },
+    {
+      id: 'p-earing3',
+      name: 'White bow stud earrings',
+      meta: 'Earrings',
+      price: 'From Rs. 179',
+      image: '/images/earing3.jpg',
+      active: true,
+      sku: 'RN-EAR-003',
+      stock: 18,
+      lowStockAt: 5,
+      trackStock: true,
+      isNew: true
+    },
+    {
+      id: 'p-necles',
+      name: 'Gold bow necklace',
+      meta: 'Necklaces',
+      price: 'From Rs. 299',
+      image: '/images/necles.jpg',
+      active: true,
+      sku: 'RN-NCK-001',
+      stock: 16,
+      lowStockAt: 5,
+      trackStock: true,
+      isNew: false
+    },
+    {
+      id: 'p-necles1',
+      name: 'Seashell pearl necklace set',
+      meta: 'Necklaces',
+      price: 'From Rs. 399',
+      image: '/images/necles1.jpg',
+      active: true,
+      sku: 'RN-NCK-002',
+      stock: 11,
+      lowStockAt: 4,
+      trackStock: true,
+      isNew: true
+    },
+    {
+      id: 'p-necles4',
+      name: 'Daisy pearl necklace set',
+      meta: 'Necklaces',
+      price: 'From Rs. 449',
+      image: '/images/necles4.jpg',
+      active: true,
+      sku: 'RN-NCK-004',
+      stock: 9,
+      lowStockAt: 3,
+      trackStock: true,
+      isNew: true
+    },
+    {
+      id: 'p-necles5',
+      name: 'Heart & pearl necklace set',
+      meta: 'Necklaces',
+      price: 'From Rs. 429',
+      image: '/images/necles5.jpg',
+      active: true,
+      sku: 'RN-NCK-005',
+      stock: 10,
+      lowStockAt: 3,
+      trackStock: true,
+      isNew: false
+    },
+    {
+      id: 'p-necls6',
+      name: 'Chevron pearl jewelry set',
+      meta: 'Necklaces',
+      price: 'From Rs. 599',
+      image: '/images/necls6.jpg',
+      active: true,
+      sku: 'RN-NCK-006',
+      stock: 7,
+      lowStockAt: 3,
+      trackStock: true,
+      isNew: true
+    },
+    {
+      id: 'p-necles8',
+      name: 'Layered bar necklace set',
+      meta: 'Necklaces',
+      price: 'From Rs. 499',
+      image: '/images/necles8.jpg',
+      active: true,
+      sku: 'RN-NCK-008',
+      stock: 12,
+      lowStockAt: 4,
+      trackStock: true,
+      isNew: true
+    },
+    {
+      id: 'p-necles9',
+      name: 'V-bar lariat necklace',
+      meta: 'Necklaces',
+      price: 'From Rs. 349',
+      image: '/images/necles9.jpg',
+      active: true,
+      sku: 'RN-NCK-009',
+      stock: 13,
+      lowStockAt: 4,
+      trackStock: true,
+      isNew: false
+    },
+    {
+      id: 'p-racelet',
+      name: 'Beach shell bracelet stack',
+      meta: 'Bracelets',
+      price: 'From Rs. 349',
+      image: '/images/racelet.jpg',
+      active: true,
+      sku: 'RN-BRC-001',
+      stock: 14,
+      lowStockAt: 4,
+      trackStock: true,
+      isNew: true
+    },
+    {
+      id: 'p-scaf',
+      name: 'Polka dot silk scarf',
+      meta: 'Accessories',
+      price: 'From Rs. 399',
+      image: '/images/scaf.jpg',
+      active: true,
+      sku: 'RN-SCF-001',
+      stock: 10,
+      lowStockAt: 3,
+      trackStock: true,
+      isNew: true
+    },
+    {
+      id: 'p-glass',
+      name: 'Oval gold sunglasses',
+      meta: 'Accessories',
+      price: 'From Rs. 499',
+      image: '/images/glass.jpg',
+      active: true,
+      sku: 'RN-GLS-001',
+      stock: 8,
+      lowStockAt: 3,
+      trackStock: true,
+      isNew: false
+    },
+    {
+      id: 'p-sunglass',
+      name: 'Cat-eye cream sunglasses',
+      meta: 'Accessories',
+      price: 'From Rs. 549',
+      image: '/images/sunglass.jpg',
+      active: true,
+      sku: 'RN-SNG-001',
+      stock: 9,
+      lowStockAt: 3,
+      trackStock: true,
+      isNew: true
+    }
   ],
   categories: [
     {
       id: 'c1',
-      name: 'Jewelry',
-      blurb: 'Rings · earrings · stacks',
-      image: '/videos/rings.mp4',
+      name: 'Rings',
+      blurb: 'Floral · leaf · stack styles',
+      image: '/images/ring4.jpg'
     },
     {
       id: 'c2',
-      name: 'Accessories',
-      blurb: 'Bracelets · chains · cute finds',
-      image: '/videos/gold.mp4',
+      name: 'Earrings',
+      blurb: 'Bows · pearls · studs',
+      image: '/images/earing1.jpg'
     },
     {
       id: 'c3',
-      name: 'Beauty',
-      blurb: 'Skincare · makeup · glow',
-      image: '/videos/silver.mp4',
+      name: 'Necklaces',
+      blurb: 'Chains · sets · charms',
+      image: '/images/necles.jpg'
     },
     {
       id: 'c4',
-      name: 'Perfume',
-      blurb: 'Mists · body scent',
-      image: '/videos/gold.mp4',
+      name: 'Bracelets',
+      blurb: 'Stacks · shells · beads',
+      image: '/images/racelet.jpg'
     },
     {
       id: 'c5',
-      name: 'Gifts & dolls',
-      blurb: 'Birthday · cute gifts',
-      image: '/videos/hero.mp4',
+      name: 'Accessories',
+      blurb: 'Scarves · sunglasses',
+      image: '/images/sunglass.jpg'
     },
     {
       id: 'c6',
       name: 'More in store',
       blurb: 'Ask on WhatsApp · visit us',
-      image: '/videos/rings.mp4',
-    },
+      image: '/images/necles8.jpg'
+    }
   ],
   stores: [
     {
       id: 's1',
       name: 'New Baneshwor',
       phone: '9823770857',
-      note: 'Opposite Sansad Bhawan',
+      note: 'Opposite Sansad Bhawan'
     },
     {
       id: 's2',
       name: 'Kalanki',
       phone: '9818570850',
-      note: 'Real Trade Centre',
+      note: 'Real Trade Centre'
     },
     {
       id: 's3',
       name: 'Putalisadak',
       phone: '9703954170',
-      note: 'Laxmi Plaza',
+      note: 'Laxmi Plaza'
     },
     {
       id: 's4',
       name: 'Patan, Lalitpur',
       phone: '9823770857',
-      note: 'Na-Tole area',
+      note: 'Na-Tole area'
     },
     {
       id: 's5',
       name: 'Chabahil Stupa',
       phone: '',
-      note: 'Near stupa · DM for details',
+      note: 'Near stupa · DM for details'
     },
     {
       id: 's6',
       name: 'Maitidevi',
       phone: '',
-      note: 'Kathmandu · DM for details',
+      note: 'Kathmandu · DM for details'
     },
     {
       id: 's7',
       name: 'Gongabu',
       phone: '',
-      note: 'Kathmandu · DM for details',
+      note: 'Kathmandu · DM for details'
     },
     {
       id: 's8',
       name: 'Sankhamul',
       phone: '',
-      note: 'Kathmandu · DM for details',
-    },
+      note: 'Kathmandu · DM for details'
+    }
   ],
   orderSteps: [
     {
       step: '01',
       title: 'Pick what you need',
-      text: 'Jewelry, beauty, perfume, gifts & more — filter by category or open Just arrived for new drops.',
+      text: 'Rings, earrings, necklaces, bracelets & accessories — filter by type or open Just arrived for new drops.'
     },
     {
       step: '02',
       title: 'WhatsApp us',
-      text: 'Tap Order — choose delivery or store pickup. We confirm stock, scent, size & total.',
+      text: 'Tap Order — choose delivery or store pickup. We confirm stock, size & total.'
     },
     {
       step: '03',
       title: 'Pay & receive',
-      text: 'Pay as agreed (eSewa / Khalti / COD). Valley delivery in 2–3 days, or pick up at your preferred store.',
-    },
+      text: 'Pay as agreed (eSewa / Khalti / COD). Valley delivery in 2–3 days, or pick up at your preferred store.'
+    }
   ],
   activity: [
     {
-      id: 'act0',
+      id: 'act1',
       at: new Date().toISOString(),
       message:
-        'Full catalog mode: jewelry, beauty, perfume, gifts — update real photos in Admin',
+        'Catalog updated with real product photos: rings, necklaces, earrings, bracelets, accessories',
     },
   ],
 }

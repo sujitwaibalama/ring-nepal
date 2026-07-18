@@ -460,8 +460,8 @@ export function HomeSections() {
                 Shop by type
               </h2>
               <p className="mx-auto mt-2 max-w-lg text-sm text-stone">
-                Not only rings — jewelry, beauty, perfume, birthday gifts, dolls
-                & more. Tap a category to filter products.
+                Rings, earrings, necklaces, bracelets, scarves & sunglasses.
+                Tap a category to filter products.
               </p>
             </div>
           </Reveal>
