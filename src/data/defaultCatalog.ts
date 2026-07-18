@@ -34,22 +34,36 @@ export const defaultCatalog: Catalog = {
       id: 'sr1',
       src: '/videos/rings.mp4',
       name: 'Stack rings',
-      tag: 'Jewelry',
+      tag: 'Rings',
       price: 'From Rs. 199'
     },
     {
       id: 'sr2',
       src: '/videos/gold.mp4',
       name: 'Gold-tone glow',
-      tag: 'Accessories',
+      tag: 'Jewelry',
       price: 'From Rs. 450'
     },
     {
       id: 'sr3',
       src: '/videos/silver.mp4',
       name: 'Sparkle edit',
-      tag: 'Gifts & more',
+      tag: 'Necklaces',
       price: 'From Rs. 350'
+    },
+    {
+      id: 'sr4',
+      src: '/videos/lookbook.mp4',
+      name: 'Lookbook edit',
+      tag: 'New',
+      price: 'Shop the look'
+    },
+    {
+      id: 'sr5',
+      src: '/videos/sparkle.mp4',
+      name: 'Everyday shine',
+      tag: 'Earrings',
+      price: 'From Rs. 199'
     }
   ],
   bestsellers: [
@@ -414,7 +428,7 @@ export const defaultCatalog: Catalog = {
       id: 'c6',
       name: 'More in store',
       blurb: 'Ask on WhatsApp · visit us',
-      image: '/images/necles8.jpg'
+      image: '/videos/lookbook.mp4'
     }
   ],
   stores: [
@@ -488,7 +502,7 @@ export const defaultCatalog: Catalog = {
     {
       id: 'act1',
       at: new Date().toISOString(),
-      message: "Added 7 new products: rings + earrings",
+      message: 'Showreel updated with lookbook + sparkle videos',
     },
   ],
 }

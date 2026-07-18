@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-18T04:47:22.732Z",
+  "updatedAt": "2026-07-18T04:51:53.472Z",
   "brand": {
     "name": "Ring Nepal",
     "nameNp": "Ring नेपाल",
@@ -30,22 +30,36 @@
       "id": "sr1",
       "src": "/videos/rings.mp4",
       "name": "Stack rings",
-      "tag": "Jewelry",
+      "tag": "Rings",
       "price": "From Rs. 199"
     },
     {
       "id": "sr2",
       "src": "/videos/gold.mp4",
       "name": "Gold-tone glow",
-      "tag": "Accessories",
+      "tag": "Jewelry",
       "price": "From Rs. 450"
     },
     {
       "id": "sr3",
       "src": "/videos/silver.mp4",
       "name": "Sparkle edit",
-      "tag": "Gifts & more",
+      "tag": "Necklaces",
       "price": "From Rs. 350"
+    },
+    {
+      "id": "sr4",
+      "src": "/videos/lookbook.mp4",
+      "name": "Lookbook edit",
+      "tag": "New",
+      "price": "Shop the look"
+    },
+    {
+      "id": "sr5",
+      "src": "/videos/sparkle.mp4",
+      "name": "Everyday shine",
+      "tag": "Earrings",
+      "price": "From Rs. 199"
     }
   ],
   "bestsellers": [
@@ -410,7 +424,7 @@
       "id": "c6",
       "name": "More in store",
       "blurb": "Ask on WhatsApp · visit us",
-      "image": "/images/necles8.jpg"
+      "image": "/videos/lookbook.mp4"
     }
   ],
   "stores": [
@@ -481,6 +495,11 @@
     }
   ],
   "activity": [
+    {
+      "id": "act-vid-1784350313472",
+      "at": "2026-07-18T04:51:53.472Z",
+      "message": "Showreel updated with lookbook.mp4 + sparkle.mp4"
+    },
     {
       "id": "act-1784350042732",
       "at": "2026-07-18T04:47:22.732Z",
