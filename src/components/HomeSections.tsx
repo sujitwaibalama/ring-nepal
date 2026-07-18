@@ -41,14 +41,16 @@ export function HomeSections() {
     const q = query.trim().toLowerCase()
     return products.filter((p) => {
       if (category) {
-        // Soft match so "Bracelets" still hits "Bracelets & more"
-        const cat = category.toLowerCase()
-        const meta = p.meta.toLowerCase()
+        // Exact category match only (word-level).
+        // Never use substring includes — "earrings" contains "rings" and mixed results.
+        const cat = category.trim().toLowerCase()
+        const meta = p.meta.trim().toLowerCase()
+        const catFirst = cat.split(/[\s&/,+]+/).filter(Boolean)[0] ?? cat
+        const metaFirst = meta.split(/[\s&/,+]+/).filter(Boolean)[0] ?? meta
         const match =
           meta === cat ||
-          meta.includes(cat) ||
-          cat.includes(meta) ||
-          meta.split(/[\s&/]+/)[0] === cat.split(/[\s&/]+/)[0]
+          // e.g. "Bracelets" ↔ "Bracelets & more" (same first word, full word only)
+          (catFirst.length >= 3 && metaFirst === catFirst)
         if (!match) return false
       }
       if (!q) return true
