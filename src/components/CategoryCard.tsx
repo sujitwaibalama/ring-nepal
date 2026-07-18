@@ -1,4 +1,4 @@
-import { ResolvedImg } from './ResolvedMedia'
+import { ResolvedCover } from './ResolvedMedia'
 
 type CategoryCardProps = {
   name: string
@@ -10,7 +10,7 @@ type CategoryCardProps = {
   active?: boolean
 }
 
-/** Simple category tile — images only (videos live in the horizontal showreel) */
+/** Category tile — image or muted looping video (same media as products/showreel) */
 export function CategoryCard({
   name,
   blurb,
@@ -25,7 +25,7 @@ export function CategoryCard({
 
   const inner = (
     <>
-      <ResolvedImg
+      <ResolvedCover
         src={image}
         alt={name}
         className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"

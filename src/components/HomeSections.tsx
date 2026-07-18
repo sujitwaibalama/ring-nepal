@@ -18,7 +18,7 @@ import {
 import { CategoryCard } from './CategoryCard'
 import { ProductQuickView } from './ProductQuickView'
 import { ProductShowreel } from './ProductShowreel'
-import { ResolvedImg } from './ResolvedMedia'
+import { ResolvedCover } from './ResolvedMedia'
 import { Reveal } from './Reveal'
 import { StockBadge } from './StockBadge'
 
@@ -126,7 +126,7 @@ export function HomeSections() {
                         onClick={() => setQuickView(item)}
                         className="relative block w-full aspect-[4/5] overflow-hidden bg-ink-soft text-left"
                       >
-                        <ResolvedImg
+                        <ResolvedCover
                           src={item.image}
                           alt={item.name}
                           className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
@@ -285,7 +285,7 @@ export function HomeSections() {
                       onClick={() => setQuickView(item)}
                       className="relative block w-full aspect-[4/5] overflow-hidden bg-mist text-left"
                     >
-                      <ResolvedImg
+                      <ResolvedCover
                         src={item.image}
                         alt={item.name}
                         className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"

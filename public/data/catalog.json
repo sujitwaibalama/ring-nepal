@@ -54,7 +54,7 @@
       "name": "Stack ring set",
       "meta": "Jewelry",
       "price": "From Rs. 199",
-      "image": "/images/cat-jewelry-stack-rings.jpg",
+      "image": "/videos/rings.mp4",
       "active": true,
       "sku": "RN-RING-001",
       "stock": 24,
@@ -67,7 +67,7 @@
       "name": "Rose statement ring",
       "meta": "Jewelry",
       "price": "From Rs. 350",
-      "image": "/images/cat-jewelry-rose-ring.jpg",
+      "image": "/videos/silver.mp4",
       "active": true,
       "sku": "RN-RING-002",
       "stock": 4,
@@ -80,7 +80,7 @@
       "name": "Everyday gold bracelet",
       "meta": "Accessories",
       "price": "From Rs. 450",
-      "image": "/images/cat-accessories-gold-bracelet.jpg",
+      "image": "/videos/gold.mp4",
       "active": true,
       "sku": "RN-ACC-001",
       "stock": 12,
@@ -93,7 +93,7 @@
       "name": "Soft glow beauty kit",
       "meta": "Beauty",
       "price": "From Rs. 499",
-      "image": "/images/cat-beauty-glow-kit.jpg",
+      "image": "/videos/silver.mp4",
       "active": true,
       "sku": "RN-BEA-001",
       "stock": 18,
@@ -106,7 +106,7 @@
       "name": "Signature perfume mist",
       "meta": "Perfume",
       "price": "From Rs. 799",
-      "image": "/images/cat-perfume-signature-mist.jpg",
+      "image": "/videos/gold.mp4",
       "active": true,
       "sku": "RN-PRF-001",
       "stock": 10,
@@ -119,7 +119,7 @@
       "name": "Birthday gift doll set",
       "meta": "Gifts & dolls",
       "price": "From Rs. 650",
-      "image": "/images/cat-gifts-birthday-doll.jpg",
+      "image": "/videos/hero.mp4",
       "active": true,
       "sku": "RN-GFT-001",
       "stock": 8,
@@ -133,37 +133,37 @@
       "id": "c1",
       "name": "Jewelry",
       "blurb": "Rings · earrings · stacks",
-      "image": "/images/cat-jewelry-stack-rings.jpg"
+      "image": "/videos/rings.mp4"
     },
     {
       "id": "c2",
       "name": "Accessories",
       "blurb": "Bracelets · chains · cute finds",
-      "image": "/images/cat-accessories-gold-bracelet.jpg"
+      "image": "/videos/gold.mp4"
     },
     {
       "id": "c3",
       "name": "Beauty",
       "blurb": "Skincare · makeup · glow",
-      "image": "/images/cat-beauty-glow-kit.jpg"
+      "image": "/videos/silver.mp4"
     },
     {
       "id": "c4",
       "name": "Perfume",
       "blurb": "Mists · body scent",
-      "image": "/images/cat-perfume-signature-mist.jpg"
+      "image": "/videos/gold.mp4"
     },
     {
       "id": "c5",
       "name": "Gifts & dolls",
       "blurb": "Birthday · cute gifts",
-      "image": "/images/cat-gifts-birthday-doll.jpg"
+      "image": "/videos/hero.mp4"
     },
     {
       "id": "c6",
       "name": "More in store",
       "blurb": "Ask on WhatsApp · visit us",
-      "image": "/images/cat-jewelry-rose-ring.jpg"
+      "image": "/videos/rings.mp4"
     }
   ],
   "stores": [

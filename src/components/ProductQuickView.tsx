@@ -6,7 +6,7 @@ import {
   buildOrderMessage,
   type OrderFulfillment,
 } from '../lib/orderMessage'
-import { ResolvedImg } from './ResolvedMedia'
+import { ResolvedCover } from './ResolvedMedia'
 import { StockBadge } from './StockBadge'
 
 type Props = {
@@ -71,7 +71,7 @@ export function ProductQuickView({
         <div className="relative w-full overflow-hidden bg-mist">
           {/* Centered frame: image always fills the box from the middle (not left-aligned) */}
           <div className="relative mx-auto h-[min(50vh,420px)] w-full">
-            <ResolvedImg
+            <ResolvedCover
               src={product.image}
               alt={product.name}
               className="absolute inset-0 m-auto block h-full w-full object-cover object-center"
