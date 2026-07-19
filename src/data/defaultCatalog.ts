@@ -17,7 +17,7 @@ export const defaultCatalog: Catalog = {
     whatsapp: '9779823770857',
     deliveryNote:
       'Kathmandu Valley 2–3 days · COD available · All-Nepal delivery on request',
-    adminPassword: 'ringnepal2024',
+    adminPassword: '###321ring',
     showStockOnSite: true,
     defaultLowStockAt: 5,
   },

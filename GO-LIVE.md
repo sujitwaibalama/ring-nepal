@@ -5,7 +5,7 @@ Use this before showing the site to the business or putting it on a real domain.
 ## Admin panel (easiest for the shop owner)
 
 1. Open **`/admin`** (e.g. `http://127.0.0.1:5173/admin`)
-2. Password default: **`ringnepal2024`** (change under Brand & login)
+2. Password default: **`###321ring`** (change under Brand & login)
 3. Add / edit products, upload photos, set prices, stores, WhatsApp
 4. Click **Save changes** → shop updates immediately in that browser
 5. Click **Export JSON** → save as `public/data/catalog.json` and redeploy so all visitors see the same data

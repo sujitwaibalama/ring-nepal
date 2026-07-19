@@ -180,7 +180,7 @@ async function main() {
   else fail('Admin wrong password rejected')
 
   // correct password
-  await page.fill('input[type="password"]', 'ringnepal2024')
+  await page.fill('input[type="password"]', '###321ring')
   await page.click('button[type="submit"]')
   await page.waitForTimeout(500)
   const dash = await page.locator('text=Overview').count()

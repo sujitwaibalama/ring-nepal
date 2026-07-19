@@ -17,7 +17,7 @@ Open http://127.0.0.1:5173/
 
 1. Run the site: `npm run dev`
 2. Open **http://127.0.0.1:5173/admin**
-3. Login password: **`ringnepal2024`** (change after login)
+3. Login password: **`###321ring`** (change after login under Settings)
 4. **Products** → Add product, set name/price, upload photo, Save
 5. Shop homepage updates after Save
 6. **Export JSON** and replace `public/data/catalog.json` before production deploy

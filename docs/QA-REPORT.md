@@ -55,7 +55,7 @@
 |-------|--------|
 | Login page | PASS |
 | Wrong password rejected | PASS |
-| Password `ringnepal2024` → dashboard | PASS |
+| Password `###321ring` → dashboard | PASS |
 | Tabs: Products, Inventory, Videos, Stores, Settings | PASS |
 | Just arrived control | PASS |
 | Add product | PASS |
