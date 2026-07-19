@@ -61,7 +61,7 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,box-shadow,backdrop-filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
         open
           ? 'border-b border-line bg-white shadow-sm'
           : scrolled
@@ -84,7 +84,7 @@ export function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className={`text-[12px] font-medium uppercase tracking-[0.2em] transition-colors ${
+              className={`text-[12px] font-medium uppercase tracking-[0.2em] transition-colors duration-300 ${
                 onHero
                   ? 'text-white/90 hover:text-pink'
                   : 'text-ink/80 hover:text-pink'
@@ -97,7 +97,7 @@ export function Navbar() {
             href={brand.instagram}
             target="_blank"
             rel="noreferrer"
-            className={`transition-colors ${
+            className={`pressable transition-colors duration-300 ${
               onHero ? 'text-white/90 hover:text-pink' : 'text-ink/80 hover:text-pink'
             }`}
             aria-label={`Instagram ${brand.instagramHandle}`}
@@ -108,7 +108,7 @@ export function Navbar() {
             href={wa('Hi Ring Nepal, I want to shop!')}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white transition-colors hover:bg-[#1ebe57]"
+            className="pressable inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white hover:bg-[#1ebe57]"
           >
             <MessageCircle className="size-3.5" />
             WhatsApp
@@ -121,7 +121,7 @@ export function Navbar() {
             href={wa('Hi Ring Nepal, I want to shop!')}
             target="_blank"
             rel="noreferrer"
-            className={`inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border transition-colors ${
+            className={`pressable inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border ${
               onHero
                 ? 'border-white/30 bg-white/10 text-white'
                 : 'border-[#25D366]/30 bg-[#25D366]/10 text-[#128C7E]'
@@ -132,7 +132,7 @@ export function Navbar() {
           </a>
           <button
             type="button"
-            className={`inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border transition-colors ${
+            className={`pressable inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border ${
               open || !onHero
                 ? 'border-ink/15 text-ink'
                 : 'border-white/30 text-white'
@@ -149,7 +149,7 @@ export function Navbar() {
       {/* Full-screen mobile drawer */}
       {open && (
         <div
-          className="fixed inset-0 top-0 z-40 flex flex-col bg-white md:hidden"
+          className="sheet-backdrop fixed inset-0 top-0 z-40 flex flex-col bg-white md:hidden"
           style={{ paddingTop: 'calc(3.75rem + env(safe-area-inset-top, 0px))' }}
           role="dialog"
           aria-modal="true"
@@ -157,24 +157,28 @@ export function Navbar() {
         >
           <nav className="flex flex-1 flex-col overflow-y-auto px-5 pb-6 pt-2">
             <div className="flex flex-col gap-0.5">
-              {links.map((link) => (
+              {links.map((link, i) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="rounded-2xl px-4 py-4 text-base font-semibold uppercase tracking-[0.12em] text-ink transition-colors active:bg-blush-deep"
+                  className="menu-item-enter rounded-2xl px-4 py-4 text-base font-semibold uppercase tracking-[0.12em] text-ink transition-colors active:bg-blush-deep"
+                  style={{ animationDelay: `${i * 45}ms` }}
                 >
                   {link.label}
                 </a>
               ))}
             </div>
 
-            <div className="mt-auto space-y-3 pt-8">
+            <div
+              className="menu-item-enter mt-auto space-y-3 pt-8"
+              style={{ animationDelay: `${links.length * 45 + 40}ms` }}
+            >
               <a
                 href={wa('Hi Ring Nepal, I want to shop!')}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-full bg-[#25D366] px-4 py-3.5 text-sm font-semibold text-white active:bg-[#1ebe57]"
+                className="pressable inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-full bg-[#25D366] px-4 py-3.5 text-sm font-semibold text-white hover:bg-[#1ebe57]"
               >
                 <MessageCircle className="size-5" />
                 Order on WhatsApp
@@ -184,7 +188,7 @@ export function Navbar() {
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => setOpen(false)}
-                className="inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-full border border-line bg-blush/60 px-4 py-3.5 text-sm font-semibold text-ink active:bg-blush-deep"
+                className="pressable inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-full border border-line bg-blush/60 px-4 py-3.5 text-sm font-semibold text-ink hover:bg-blush-deep"
               >
                 <InstagramIcon className="size-4" />
                 {brand.instagramHandle}

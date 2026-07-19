@@ -6,6 +6,12 @@ import { useCatalog } from '../lib/CatalogContext'
 export function WhatsAppFab() {
   const { wa } = useCatalog()
   const [hidden, setHidden] = useState(false)
+  const [ready, setReady] = useState(false)
+
+  useEffect(() => {
+    const t = window.setTimeout(() => setReady(true), 600)
+    return () => window.clearTimeout(t)
+  }, [])
 
   // Hide when product sheet / menu body lock is active to avoid double green CTAs
   useEffect(() => {
@@ -31,7 +37,13 @@ export function WhatsAppFab() {
       href={wa('Hi Ring Nepal, I want to shop!')}
       target="_blank"
       rel="noreferrer"
-      className="safe-fab fixed z-40 inline-flex min-h-12 items-center gap-2 rounded-full bg-[#25D366] px-4 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#25D366]/35 transition-transform hover:scale-[1.03] hover:bg-[#1ebe57] active:scale-95 md:bottom-8 md:right-8"
+      className={`safe-fab pressable fixed z-40 inline-flex min-h-12 items-center gap-2 rounded-full bg-[#25D366] px-4 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#25D366]/35 hover:bg-[#1ebe57] md:bottom-8 md:right-8 ${
+        ready ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'
+      }`}
+      style={{
+        transition:
+          'transform 0.45s cubic-bezier(0.34, 1.3, 0.64, 1), opacity 0.4s ease, background-color 0.25s ease',
+      }}
       aria-label="Chat on WhatsApp"
     >
       <MessageCircle className="size-5" />

@@ -60,14 +60,14 @@ export function ProductQuickView({
 
   return (
     <div
-      className="fixed inset-0 z-[80] flex items-end justify-center bg-ink/55 p-0 sm:items-center sm:p-4"
+      className="sheet-backdrop fixed inset-0 z-[80] flex items-end justify-center bg-ink/55 p-0 sm:items-center sm:p-4"
       role="dialog"
       aria-modal="true"
       aria-labelledby={titleId}
       onClick={onClose}
     >
       <div
-        className="flex max-h-[94svh] w-full max-w-lg flex-col overflow-hidden rounded-t-[1.75rem] bg-white shadow-2xl sm:max-h-[90vh] sm:rounded-3xl"
+        className="sheet-panel flex max-h-[94svh] w-full max-w-lg flex-col overflow-hidden rounded-t-[1.75rem] bg-white shadow-2xl sm:max-h-[90vh] sm:rounded-3xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Drag handle (mobile sheet cue) */}
@@ -95,7 +95,7 @@ export function ProductQuickView({
             <button
               type="button"
               onClick={onClose}
-              className="absolute right-3 top-3 z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full bg-white/95 text-ink shadow-sm hover:bg-white"
+              className="pressable absolute right-3 top-3 z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full bg-white/95 text-ink shadow-sm hover:bg-white"
               aria-label="Close"
             >
               <X className="size-4" />
@@ -183,7 +183,7 @@ export function ProductQuickView({
                     href={wa(message)}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex w-full min-h-12 items-center justify-center gap-2 rounded-full bg-[#25D366] py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#1ebe57]"
+                    className="pressable flex w-full min-h-12 items-center justify-center gap-2 rounded-full bg-[#25D366] py-3.5 text-sm font-semibold text-white hover:bg-[#1ebe57]"
                   >
                     <MessageCircle className="size-4" />
                     Order on WhatsApp
@@ -224,7 +224,7 @@ export function ProductQuickView({
                 href={wa(message)}
                 target="_blank"
                 rel="noreferrer"
-                className="flex w-full min-h-12 items-center justify-center gap-2 rounded-full bg-[#25D366] py-3.5 text-sm font-semibold text-white active:bg-[#1ebe57]"
+                className="pressable flex w-full min-h-12 items-center justify-center gap-2 rounded-full bg-[#25D366] py-3.5 text-sm font-semibold text-white hover:bg-[#1ebe57]"
               >
                 <MessageCircle className="size-5" />
                 Order on WhatsApp
@@ -270,9 +270,9 @@ function FulfillChip({
     <button
       type="button"
       onClick={onClick}
-      className={`inline-flex min-h-12 items-center justify-center gap-1.5 rounded-full border px-3 py-3 text-xs font-semibold transition-colors active:scale-[0.98] ${
+      className={`chip inline-flex min-h-12 items-center justify-center gap-1.5 rounded-full border px-3 py-3 text-xs font-semibold ${
         active
-          ? 'border-ink bg-ink text-white'
+          ? 'border-ink bg-ink text-white shadow-sm'
           : 'border-line bg-blush/50 text-ink hover:border-pink/40'
       }`}
     >

@@ -176,7 +176,7 @@ export function HomeSections() {
                     getStockStatus(item) === 'out'
                   return (
                     <Reveal key={item.id} delay={i * 50}>
-                      <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition-all sm:rounded-3xl hover:-translate-y-1 hover:bg-white/10">
+                      <article className="group card-lift flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 sm:rounded-3xl hover:bg-white/10 hover:shadow-lg hover:shadow-black/20">
                         <button
                           type="button"
                           onClick={() => setQuickView(item)}
@@ -185,7 +185,7 @@ export function HomeSections() {
                           <ResolvedCover
                             src={item.image}
                             alt={item.name}
-                            className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                            className="media-zoom absolute inset-0 h-full w-full object-cover object-center"
                           />
                           <div className="absolute left-2 top-2 flex flex-wrap gap-1 sm:left-3 sm:top-3 sm:gap-1.5">
                             <span className="rounded-full bg-pink px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-white shadow-sm sm:px-2.5 sm:py-1 sm:text-[10px]">
@@ -231,7 +231,7 @@ export function HomeSections() {
                                 )}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="inline-flex min-h-9 w-full items-center justify-center gap-1 rounded-full bg-white px-2.5 py-2 text-[10px] font-semibold uppercase tracking-[0.1em] text-ink transition-colors hover:bg-pink hover:text-white sm:min-h-0 sm:w-auto sm:gap-1.5 sm:px-3.5 sm:text-[11px]"
+                                className="pressable inline-flex min-h-9 w-full items-center justify-center gap-1 rounded-full bg-white px-2.5 py-2 text-[10px] font-semibold uppercase tracking-[0.1em] text-ink hover:bg-pink hover:text-white sm:min-h-0 sm:w-auto sm:gap-1.5 sm:px-3.5 sm:text-[11px]"
                               >
                                 <MessageCircle className="size-3 sm:size-3.5" />
                                 Order
@@ -256,7 +256,7 @@ export function HomeSections() {
                   <button
                     type="button"
                     onClick={() => jumpToFullCategory(category)}
-                    className="mt-5 inline-flex min-h-11 items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ink transition-colors hover:bg-pink hover:text-white"
+                    className="pressable mt-5 inline-flex min-h-11 items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ink hover:bg-pink hover:text-white"
                   >
                     See all {category} →
                   </button>
@@ -354,7 +354,7 @@ export function HomeSections() {
                 getStockStatus(item) === 'out'
               return (
                 <Reveal key={item.id} delay={i * 40}>
-                  <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-blush/50 transition-all duration-300 sm:rounded-3xl hover:-translate-y-1 hover:shadow-md">
+                  <article className="group card-lift flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-blush/50 sm:rounded-3xl hover:border-pink/25 hover:shadow-md">
                     <button
                       type="button"
                       onClick={() => setQuickView(item)}
@@ -363,7 +363,7 @@ export function HomeSections() {
                       <ResolvedCover
                         src={item.image}
                         alt={item.name}
-                        className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                        className="media-zoom absolute inset-0 h-full w-full object-cover object-center"
                       />
                       <div className="absolute left-2 top-2 flex flex-wrap gap-1 sm:left-3 sm:top-3 sm:gap-1.5">
                         {item.isNew && (
@@ -374,7 +374,7 @@ export function HomeSections() {
                         <StockBadge product={item} show={showStock} />
                       </div>
                       {/* Always visible on touch; hover-only on desktop */}
-                      <span className="absolute bottom-2 right-2 rounded-full bg-white/95 px-2 py-1 text-[9px] font-semibold uppercase tracking-wider text-ink shadow-sm sm:bottom-3 sm:right-3 sm:px-2.5 sm:text-[10px] sm:opacity-0 sm:transition-opacity sm:group-hover:opacity-100">
+                      <span className="absolute bottom-2 right-2 rounded-full bg-white/95 px-2 py-1 text-[9px] font-semibold uppercase tracking-wider text-ink shadow-sm transition-all duration-300 sm:bottom-3 sm:right-3 sm:translate-y-1 sm:px-2.5 sm:text-[10px] sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100">
                         View
                       </span>
                     </button>
@@ -404,7 +404,7 @@ export function HomeSections() {
                             <button
                               type="button"
                               onClick={() => setQuickView(item)}
-                              className="min-h-9 rounded-full border border-line bg-white px-2 py-2 text-[10px] font-semibold uppercase tracking-[0.08em] text-ink hover:border-pink/40 sm:min-h-0 sm:px-3 sm:text-[11px]"
+                              className="pressable min-h-9 rounded-full border border-line bg-white px-2 py-2 text-[10px] font-semibold uppercase tracking-[0.08em] text-ink hover:border-pink/40 sm:min-h-0 sm:px-3 sm:text-[11px]"
                             >
                               Options
                             </button>
@@ -422,7 +422,7 @@ export function HomeSections() {
                               )}
                               target="_blank"
                               rel="noreferrer"
-                              className="inline-flex min-h-9 items-center justify-center gap-1 rounded-full bg-ink px-2 py-2 text-[10px] font-semibold uppercase tracking-[0.08em] text-white transition-colors hover:bg-ink-soft sm:min-h-0 sm:gap-1.5 sm:px-3.5 sm:text-[11px]"
+                              className="pressable inline-flex min-h-9 items-center justify-center gap-1 rounded-full bg-ink px-2 py-2 text-[10px] font-semibold uppercase tracking-[0.08em] text-white hover:bg-ink-soft sm:min-h-0 sm:gap-1.5 sm:px-3.5 sm:text-[11px]"
                             >
                               <MessageCircle className="size-3 sm:size-3.5" />
                               Order
@@ -481,7 +481,7 @@ export function HomeSections() {
           <div className="grid gap-3 sm:gap-6 md:grid-cols-3">
             {orderSteps.map((s, i) => (
               <Reveal key={s.step} delay={i * 70}>
-                <div className="rounded-2xl border border-line bg-white p-5 shadow-sm sm:rounded-3xl sm:p-6">
+                <div className="card-lift rounded-2xl border border-line bg-white p-5 shadow-sm sm:rounded-3xl sm:p-6 hover:border-pink/20 hover:shadow-md">
                   <p className="text-xs font-semibold tracking-[0.2em] text-pink">
                     {s.step}
                   </p>
@@ -499,7 +499,7 @@ export function HomeSections() {
                 href={wa('Hi Ring Nepal, I want to place an order!')}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#1ebe57]"
+                className="pressable inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-sm font-semibold text-white hover:bg-[#1ebe57]"
               >
                 <MessageCircle className="size-4" />
                 Start WhatsApp order
@@ -508,7 +508,7 @@ export function HomeSections() {
                 href={brand.daraz}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-ink/15 bg-white px-6 py-3.5 text-sm font-semibold text-ink transition-colors hover:border-pink hover:text-pink"
+                className="pressable inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-ink/15 bg-white px-6 py-3.5 text-sm font-semibold text-ink hover:border-pink hover:text-pink"
               >
                 Shop on Daraz
               </a>
@@ -618,7 +618,7 @@ export function HomeSections() {
           <div className="grid gap-2.5 sm:grid-cols-2 sm:gap-3 lg:grid-cols-4">
             {stores.map((s, i) => (
               <Reveal key={s.id} delay={i * 40}>
-                <div className="flex h-full flex-col rounded-2xl border border-line bg-white p-3.5 transition-colors sm:p-4 hover:border-pink/30">
+                <div className="card-lift flex h-full flex-col rounded-2xl border border-line bg-white p-3.5 sm:p-4 hover:border-pink/30 hover:shadow-sm">
                   <div className="flex items-start gap-2">
                     <MapPin className="mt-0.5 size-4 shrink-0 text-pink" />
                     <div className="min-w-0 flex-1">
@@ -630,7 +630,7 @@ export function HomeSections() {
                     {s.phone ? (
                       <a
                         href={`tel:+977${s.phone.replace(/\D/g, '').replace(/^977/, '')}`}
-                        className="inline-flex min-h-10 items-center justify-center gap-1 rounded-full border border-line px-2 py-2 text-xs font-medium text-ink hover:border-pink/40"
+                        className="pressable inline-flex min-h-10 items-center justify-center gap-1 rounded-full border border-line px-2 py-2 text-xs font-medium text-ink hover:border-pink/40"
                         title="Call store"
                       >
                         <Phone className="size-3.5 shrink-0" />
@@ -641,7 +641,7 @@ export function HomeSections() {
                         href={brand.instagram}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex min-h-10 items-center justify-center rounded-full border border-line px-2 py-2 text-xs text-stone"
+                        className="pressable inline-flex min-h-10 items-center justify-center rounded-full border border-line px-2 py-2 text-xs text-stone"
                       >
                         DM
                       </a>
@@ -650,7 +650,7 @@ export function HomeSections() {
                       href={wa(buildStoreVisitMessage(s.name, s.note))}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex min-h-10 items-center justify-center gap-1 rounded-full bg-[#25D366]/12 px-2 py-2 text-xs font-semibold text-[#128C7E] hover:bg-[#25D366]/20"
+                      className="pressable inline-flex min-h-10 items-center justify-center gap-1 rounded-full bg-[#25D366]/12 px-2 py-2 text-xs font-semibold text-[#128C7E] hover:bg-[#25D366]/20"
                     >
                       <MessageCircle className="size-3.5 shrink-0" />
                       WhatsApp
@@ -807,8 +807,8 @@ function FilterChip({
     <button
       type="button"
       onClick={onClick}
-      className={`min-h-9 shrink-0 rounded-full px-3.5 py-2 text-xs font-semibold transition-colors active:scale-[0.98] ${
-        active ? on : idle
+      className={`chip min-h-9 shrink-0 rounded-full px-3.5 py-2 text-xs font-semibold ${
+        active ? `${on} shadow-sm` : idle
       }`}
     >
       {label}

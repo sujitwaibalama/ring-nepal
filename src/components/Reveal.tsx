@@ -7,7 +7,7 @@ type RevealProps = {
   delay?: number
 }
 
-/** MotionSites-style: calm fade/rise when section enters view (not video spam) */
+/** Calm fade/rise when content enters view — premium, not flashy */
 export function Reveal({ children, className = '', delay = 0 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null)
   const [shown, setShown] = useState(false)
@@ -22,6 +22,14 @@ export function Reveal({ children, className = '', delay = 0 }: RevealProps) {
       return
     }
 
+    // Already in view on load (above fold) → show quickly
+    const rect = el.getBoundingClientRect()
+    if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) {
+      // Tiny delay so first paint feels intentional
+      const t = window.setTimeout(() => setShown(true), Math.min(delay, 80))
+      return () => window.clearTimeout(t)
+    }
+
     const io = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -29,11 +37,11 @@ export function Reveal({ children, className = '', delay = 0 }: RevealProps) {
           io.disconnect()
         }
       },
-      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' },
+      { threshold: 0.08, rootMargin: '0px 0px -6% 0px' },
     )
     io.observe(el)
     return () => io.disconnect()
-  }, [])
+  }, [delay])
 
   return (
     <div

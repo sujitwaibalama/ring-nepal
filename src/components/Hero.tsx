@@ -60,12 +60,12 @@ export function Hero() {
         }}
       >
         <div className="mx-auto flex max-w-3xl flex-col items-center">
-          <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-[10px] font-medium uppercase tracking-[0.22em] text-white/90 backdrop-blur-sm sm:mb-4 sm:px-4 sm:text-[11px] sm:tracking-[0.28em]">
+          <p className="hero-enter hero-enter-delay-1 mb-3 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-[10px] font-medium uppercase tracking-[0.22em] text-white/90 backdrop-blur-sm sm:mb-4 sm:px-4 sm:text-[11px] sm:tracking-[0.28em]">
             <MapPin className="size-3 shrink-0 text-pink" />
             <span className="line-clamp-1">{hero.eyebrow}</span>
           </p>
 
-          <h1 className="leading-[1.05]">
+          <h1 className="hero-enter hero-enter-delay-2 leading-[1.05]">
             <span className="font-script block text-[2.75rem] text-white sm:text-5xl md:text-7xl lg:text-8xl">
               {hero.line1}
             </span>
@@ -74,38 +74,37 @@ export function Hero() {
             </span>
           </h1>
 
-          <p className="mt-4 max-w-md px-1 text-sm font-light leading-relaxed text-white/80 sm:mt-5 md:text-base">
+          <p className="hero-enter hero-enter-delay-3 mt-4 max-w-md px-1 text-sm font-light leading-relaxed text-white/80 sm:mt-5 md:text-base">
             {hero.subtitle}
           </p>
 
-          <div className="mt-7 flex w-full max-w-sm flex-col items-stretch gap-2.5 sm:mt-8 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-3">
+          <div className="hero-enter hero-enter-delay-4 mt-7 flex w-full max-w-sm flex-col items-stretch gap-2.5 sm:mt-8 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-3">
             <a
               href="#showreel"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-ink-soft active:scale-[0.98]"
+              className="pressable inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-black/25 hover:bg-ink-soft"
             >
               Shop looks
-              <ArrowRight className="size-4" />
+              <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
             </a>
             <a
               href={wa('Hi Ring Nepal, I want to shop!')}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/35 bg-white/10 px-6 py-3.5 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/20 active:scale-[0.98]"
+              className="pressable inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/35 bg-white/10 px-6 py-3.5 text-sm font-medium text-white backdrop-blur-sm hover:bg-white/20"
             >
               WhatsApp order
             </a>
           </div>
 
-          <p className="mt-6 text-[10px] uppercase tracking-[0.3em] text-white/45 sm:mt-8 sm:tracking-[0.35em]">
+          <p className="hero-enter hero-enter-delay-5 mt-6 text-[10px] uppercase tracking-[0.3em] text-white/45 sm:mt-8 sm:tracking-[0.35em]">
             Estd {brand.estd} · {brand.nameNp}
           </p>
         </div>
       </div>
 
-      {/* Scroll hint — visible on mobile too */}
       <a
         href="#showreel"
-        className="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-1 text-white/55 transition-opacity hover:text-white/80 sm:bottom-8"
+        className="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-1 text-white/55 transition-opacity duration-300 hover:text-white/80 sm:bottom-8"
         style={{
           opacity: fade,
           marginBottom: 'env(safe-area-inset-bottom, 0px)',

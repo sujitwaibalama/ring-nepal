@@ -97,7 +97,7 @@ function ShowreelCard({
   return (
     <article
       ref={ref}
-      className="relative w-[72vw] max-w-[300px] shrink-0 snap-center overflow-hidden rounded-[1.5rem] bg-mist shadow-sm ring-1 ring-line sm:w-[300px] sm:rounded-[1.75rem] md:w-[340px]"
+      className="card-lift relative w-[72vw] max-w-[300px] shrink-0 snap-center overflow-hidden rounded-[1.5rem] bg-mist shadow-sm ring-1 ring-line sm:w-[300px] sm:rounded-[1.75rem] md:w-[340px]"
     >
       <div className="relative aspect-[3/4]">
         {mediaUrl ? (
@@ -125,7 +125,7 @@ function ShowreelCard({
               href={waHref}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex min-h-10 items-center gap-1.5 rounded-full bg-ink px-3.5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-ink-soft active:scale-95"
+              className="pressable inline-flex min-h-10 items-center gap-1.5 rounded-full bg-ink px-3.5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-white hover:bg-ink-soft"
             >
               <MessageCircle className="size-3.5" />
               Order
