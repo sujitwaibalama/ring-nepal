@@ -77,17 +77,19 @@ export function HomeSections() {
     <>
       <ProductShowreel />
 
-      <div className="border-y border-line bg-blush px-5 py-5 md:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col items-center gap-3 text-center sm:flex-row sm:justify-between sm:text-left">
-          <p className="text-sm text-ink-soft">{brand.deliveryNote}</p>
-          <div className="flex flex-wrap items-center justify-center gap-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-ink/70">
-            <span className="rounded-full bg-white px-3 py-1 shadow-sm">
+      <div className="border-y border-line bg-blush px-4 py-4 sm:px-5 sm:py-5 md:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-2.5 text-center sm:flex-row sm:justify-between sm:gap-3 sm:text-left">
+          <p className="text-xs leading-relaxed text-ink-soft sm:text-sm">
+            {brand.deliveryNote}
+          </p>
+          <div className="no-scrollbar flex max-w-full items-center gap-2 overflow-x-auto text-[10px] font-semibold uppercase tracking-[0.16em] text-ink/70 sm:flex-wrap sm:justify-center sm:overflow-visible">
+            <span className="shrink-0 rounded-full bg-white px-3 py-1.5 shadow-sm">
               {brand.storeCount} stores
             </span>
-            <span className="rounded-full bg-white px-3 py-1 shadow-sm">
+            <span className="shrink-0 rounded-full bg-white px-3 py-1.5 shadow-sm">
               WhatsApp order
             </span>
-            <span className="rounded-full bg-white px-3 py-1 shadow-sm">
+            <span className="shrink-0 rounded-full bg-white px-3 py-1.5 shadow-sm">
               COD available
             </span>
           </div>
@@ -96,10 +98,13 @@ export function HomeSections() {
 
       {/* New arrivals — digital window for drops (vs Instagram grid limits) */}
       {newArrivals.length > 0 && (
-        <section id="new" className="bg-ink px-5 py-14 text-white md:px-8 md:py-16">
+        <section
+          id="new"
+          className="bg-ink px-4 py-12 text-white sm:px-5 sm:py-14 md:px-8 md:py-16"
+        >
           <div className="mx-auto max-w-7xl">
             <Reveal>
-              <div className="mb-8 flex flex-col items-start justify-between gap-3 md:flex-row md:items-end">
+              <div className="mb-6 flex flex-col items-start justify-between gap-3 sm:mb-8 md:flex-row md:items-end">
                 <div>
                   <p className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.3em] text-pink">
                     <Sparkles className="size-3.5" />
@@ -120,14 +125,15 @@ export function HomeSections() {
                   )}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-sm font-semibold text-pink transition-colors hover:text-gold-light"
+                  className="min-h-10 text-sm font-semibold text-pink transition-colors hover:text-gold-light"
                 >
                   Ask for new drops →
                 </a>
               </div>
             </Reveal>
 
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {/* 2-col mobile grid = Instagram-style browse density */}
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-3">
               {newArrivals.map((item, i) => {
                 const out =
                   showStock &&
@@ -135,7 +141,7 @@ export function HomeSections() {
                   getStockStatus(item) === 'out'
                 return (
                   <Reveal key={item.id} delay={i * 50}>
-                    <article className="group overflow-hidden rounded-3xl border border-white/10 bg-white/5 transition-all hover:-translate-y-1 hover:bg-white/10">
+                    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition-all sm:rounded-3xl hover:-translate-y-1 hover:bg-white/10">
                       <button
                         type="button"
                         onClick={() => setQuickView(item)}
@@ -146,18 +152,18 @@ export function HomeSections() {
                           alt={item.name}
                           className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                         />
-                        <div className="absolute left-3 top-3 flex flex-wrap gap-1.5">
-                          <span className="rounded-full bg-pink px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white shadow-sm">
+                        <div className="absolute left-2 top-2 flex flex-wrap gap-1 sm:left-3 sm:top-3 sm:gap-1.5">
+                          <span className="rounded-full bg-pink px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-white shadow-sm sm:px-2.5 sm:py-1 sm:text-[10px]">
                             New
                           </span>
                           <StockBadge product={item} show={showStock} />
                         </div>
                       </button>
-                      <div className="p-5">
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-pink">
+                      <div className="flex flex-1 flex-col p-2.5 sm:p-5">
+                        <p className="truncate text-[9px] font-semibold uppercase tracking-[0.16em] text-pink sm:text-[10px] sm:tracking-[0.2em]">
                           {item.meta}
                         </p>
-                        <h3 className="mt-1 text-lg font-medium text-white">
+                        <h3 className="mt-0.5 line-clamp-2 text-sm font-medium leading-snug text-white sm:mt-1 sm:text-lg">
                           <button
                             type="button"
                             onClick={() => setQuickView(item)}
@@ -166,12 +172,12 @@ export function HomeSections() {
                             {item.name}
                           </button>
                         </h3>
-                        <div className="mt-4 flex items-center justify-between gap-3">
-                          <p className="text-sm font-semibold text-white/95">
+                        <div className="mt-auto flex flex-col gap-2 pt-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:pt-4">
+                          <p className="text-xs font-semibold text-white/95 sm:text-sm">
                             {item.price}
                           </p>
                           {out ? (
-                            <span className="rounded-full bg-white/10 px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-white/50">
+                            <span className="rounded-full bg-white/10 px-2.5 py-1.5 text-center text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 sm:px-3.5 sm:py-2 sm:text-[11px]">
                               Sold out
                             </span>
                           ) : (
@@ -190,9 +196,9 @@ export function HomeSections() {
                               )}
                               target="_blank"
                               rel="noreferrer"
-                              className="inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink transition-colors hover:bg-pink hover:text-white"
+                              className="inline-flex min-h-9 w-full items-center justify-center gap-1 rounded-full bg-white px-2.5 py-2 text-[10px] font-semibold uppercase tracking-[0.1em] text-ink transition-colors hover:bg-pink hover:text-white sm:min-h-0 sm:w-auto sm:gap-1.5 sm:px-3.5 sm:text-[11px]"
                             >
-                              <MessageCircle className="size-3.5" />
+                              <MessageCircle className="size-3 sm:size-3.5" />
                               Order
                             </a>
                           )}
@@ -207,10 +213,13 @@ export function HomeSections() {
         </section>
       )}
 
-      <section id="featured" className="bg-white px-5 py-16 md:px-8 md:py-20">
+      <section
+        id="featured"
+        className="bg-white px-4 py-12 sm:px-5 sm:py-16 md:px-8 md:py-20"
+      >
         <div className="mx-auto max-w-7xl">
           <Reveal>
-            <div className="mb-8 flex flex-col items-start justify-between gap-3 md:flex-row md:items-end">
+            <div className="mb-6 flex flex-col items-start justify-between gap-3 sm:mb-8 md:flex-row md:items-end">
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-pink">
                   Bestsellers
@@ -219,7 +228,7 @@ export function HomeSections() {
                   What everyone’s grabbing
                 </h2>
                 <p className="mt-2 max-w-md text-sm text-stone">
-                  Jewelry, beauty, perfume, gifts & more. Tap to zoom, filter by
+                  Jewelry, beauty, perfume, gifts & more. Tap a product, filter by
                   type, then Order on WhatsApp.
                 </p>
               </div>
@@ -227,66 +236,69 @@ export function HomeSections() {
                 href={wa('Hi Ring Nepal, show me bestsellers!')}
                 target="_blank"
                 rel="noreferrer"
-                className="text-sm font-semibold text-pink-deep transition-colors hover:text-pink"
+                className="min-h-10 text-sm font-semibold text-pink-deep transition-colors hover:text-pink"
               >
                 Ask on WhatsApp →
               </a>
             </div>
           </Reveal>
 
-          {/* Search + category chips — practical for 10+ SKUs */}
-          <div className="mb-6 space-y-3">
+          {/* Search (static) + sticky chips — compact so products stay visible */}
+          <div className="mb-4 space-y-2.5 sm:mb-6 sm:space-y-3">
             <label className="relative block max-w-md">
               <Search className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-stone" />
               <input
                 type="search"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search jewelry, beauty, perfume, gifts…"
-                className="w-full rounded-full border border-line bg-blush/60 py-2.5 pl-10 pr-4 text-sm text-ink outline-none placeholder:text-stone/70 focus:border-pink"
+                placeholder="Search jewelry, beauty, perfume…"
+                enterKeyHint="search"
+                className="min-h-11 w-full rounded-full border border-line bg-blush/60 py-2.5 pl-10 pr-4 text-base text-ink outline-none placeholder:text-stone/70 focus:border-pink sm:min-h-0 sm:text-sm"
               />
             </label>
-            <div className="flex flex-wrap gap-2">
-              <FilterChip
-                label="All"
-                active={!category}
-                onClick={() => setCategory(null)}
-              />
-              {categoryNames.map((name) => (
+            <div className="sticky top-[3.5rem] z-20 -mx-4 border-b border-line/70 bg-white/95 px-4 py-2 backdrop-blur-md sm:static sm:mx-0 sm:border-0 sm:bg-transparent sm:px-0 sm:py-0 sm:backdrop-blur-none">
+              <div className="no-scrollbar -mx-0.5 flex gap-2 overflow-x-auto px-0.5 pb-0.5 sm:flex-wrap sm:overflow-visible">
                 <FilterChip
-                  key={name}
-                  label={name}
-                  active={category?.toLowerCase() === name.toLowerCase()}
-                  onClick={() =>
-                    setCategory(
-                      category?.toLowerCase() === name.toLowerCase()
-                        ? null
-                        : name,
-                    )
-                  }
+                  label="All"
+                  active={!category}
+                  onClick={() => setCategory(null)}
                 />
-              ))}
-              {(category || query) && (
-                <button
-                  type="button"
-                  onClick={() => {
-                    setCategory(null)
-                    setQuery('')
-                  }}
-                  className="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-medium text-stone hover:text-ink"
-                >
-                  <X className="size-3" />
-                  Clear
-                </button>
-              )}
+                {categoryNames.map((name) => (
+                  <FilterChip
+                    key={name}
+                    label={name}
+                    active={category?.toLowerCase() === name.toLowerCase()}
+                    onClick={() =>
+                      setCategory(
+                        category?.toLowerCase() === name.toLowerCase()
+                          ? null
+                          : name,
+                      )
+                    }
+                  />
+                ))}
+                {(category || query) && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setCategory(null)
+                      setQuery('')
+                    }}
+                    className="inline-flex min-h-9 shrink-0 items-center gap-1 rounded-full px-3 py-2 text-xs font-medium text-stone hover:text-ink"
+                  >
+                    <X className="size-3" />
+                    Clear
+                  </button>
+                )}
+              </div>
+              <p className="mt-1.5 text-[11px] text-stone sm:mt-2 sm:text-xs">
+                Showing {filtered.length} of {products.length} products
+                {category ? ` · ${category}` : ''}
+              </p>
             </div>
-            <p className="text-xs text-stone">
-              Showing {filtered.length} of {products.length} products
-              {category ? ` · ${category}` : ''}
-            </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-3">
             {filtered.map((item, i) => {
               const out =
                 showStock &&
@@ -294,7 +306,7 @@ export function HomeSections() {
                 getStockStatus(item) === 'out'
               return (
                 <Reveal key={item.id} delay={i * 40}>
-                  <article className="group overflow-hidden rounded-3xl border border-line bg-blush/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                  <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-blush/50 transition-all duration-300 sm:rounded-3xl hover:-translate-y-1 hover:shadow-md">
                     <button
                       type="button"
                       onClick={() => setQuickView(item)}
@@ -305,23 +317,24 @@ export function HomeSections() {
                         alt={item.name}
                         className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                       />
-                      <div className="absolute left-3 top-3 flex flex-wrap gap-1.5">
+                      <div className="absolute left-2 top-2 flex flex-wrap gap-1 sm:left-3 sm:top-3 sm:gap-1.5">
                         {item.isNew && (
-                          <span className="rounded-full bg-pink px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white shadow-sm">
+                          <span className="rounded-full bg-pink px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-white shadow-sm sm:px-2.5 sm:py-1 sm:text-[10px]">
                             New
                           </span>
                         )}
                         <StockBadge product={item} show={showStock} />
                       </div>
-                      <span className="absolute bottom-3 right-3 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-ink opacity-0 shadow-sm transition-opacity group-hover:opacity-100">
-                        Quick view
+                      {/* Always visible on touch; hover-only on desktop */}
+                      <span className="absolute bottom-2 right-2 rounded-full bg-white/95 px-2 py-1 text-[9px] font-semibold uppercase tracking-wider text-ink shadow-sm sm:bottom-3 sm:right-3 sm:px-2.5 sm:text-[10px] sm:opacity-0 sm:transition-opacity sm:group-hover:opacity-100">
+                        View
                       </span>
                     </button>
-                    <div className="p-5">
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-pink">
+                    <div className="flex flex-1 flex-col p-2.5 sm:p-5">
+                      <p className="truncate text-[9px] font-semibold uppercase tracking-[0.16em] text-pink sm:text-[10px] sm:tracking-[0.2em]">
                         {item.meta}
                       </p>
-                      <h3 className="mt-1 text-lg font-medium text-ink">
+                      <h3 className="mt-0.5 line-clamp-2 text-sm font-medium leading-snug text-ink sm:mt-1 sm:text-lg">
                         <button
                           type="button"
                           onClick={() => setQuickView(item)}
@@ -330,20 +343,20 @@ export function HomeSections() {
                           {item.name}
                         </button>
                       </h3>
-                      <div className="mt-4 flex items-center justify-between gap-3">
-                        <p className="text-sm font-semibold text-ink">
+                      <div className="mt-auto flex flex-col gap-2 pt-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:pt-4">
+                        <p className="text-xs font-semibold text-ink sm:text-sm">
                           {item.price}
                         </p>
                         {out ? (
-                          <span className="rounded-full bg-stone/15 px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-stone">
+                          <span className="rounded-full bg-stone/15 px-2.5 py-1.5 text-center text-[10px] font-semibold uppercase tracking-[0.1em] text-stone sm:px-3.5 sm:py-2 sm:text-[11px]">
                             Sold out
                           </span>
                         ) : (
-                          <div className="flex items-center gap-1.5">
+                          <div className="grid grid-cols-2 gap-1.5 sm:flex sm:items-center">
                             <button
                               type="button"
                               onClick={() => setQuickView(item)}
-                              className="rounded-full border border-line bg-white px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.1em] text-ink hover:border-pink/40"
+                              className="min-h-9 rounded-full border border-line bg-white px-2 py-2 text-[10px] font-semibold uppercase tracking-[0.08em] text-ink hover:border-pink/40 sm:min-h-0 sm:px-3 sm:text-[11px]"
                             >
                               Options
                             </button>
@@ -361,9 +374,9 @@ export function HomeSections() {
                               )}
                               target="_blank"
                               rel="noreferrer"
-                              className="inline-flex items-center gap-1.5 rounded-full bg-ink px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-ink-soft"
+                              className="inline-flex min-h-9 items-center justify-center gap-1 rounded-full bg-ink px-2 py-2 text-[10px] font-semibold uppercase tracking-[0.08em] text-white transition-colors hover:bg-ink-soft sm:min-h-0 sm:gap-1.5 sm:px-3.5 sm:text-[11px]"
                             >
-                              <MessageCircle className="size-3.5" />
+                              <MessageCircle className="size-3 sm:size-3.5" />
                               Order
                             </a>
                           </div>
@@ -402,10 +415,13 @@ export function HomeSections() {
         </div>
       </section>
 
-      <section id="how" className="bg-blush px-5 py-16 md:px-8 md:py-20">
+      <section
+        id="how"
+        className="bg-blush px-4 py-12 sm:px-5 sm:py-16 md:px-8 md:py-20"
+      >
         <div className="mx-auto max-w-7xl">
           <Reveal>
-            <div className="mb-10 text-center">
+            <div className="mb-8 text-center sm:mb-10">
               <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-pink">
                 Easy order
               </p>
@@ -414,26 +430,28 @@ export function HomeSections() {
               </h2>
             </div>
           </Reveal>
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-3 sm:gap-6 md:grid-cols-3">
             {orderSteps.map((s, i) => (
               <Reveal key={s.step} delay={i * 70}>
-                <div className="rounded-3xl border border-line bg-white p-6 shadow-sm">
+                <div className="rounded-2xl border border-line bg-white p-5 shadow-sm sm:rounded-3xl sm:p-6">
                   <p className="text-xs font-semibold tracking-[0.2em] text-pink">
                     {s.step}
                   </p>
-                  <h3 className="mt-3 text-lg font-semibold text-ink">{s.title}</h3>
+                  <h3 className="mt-2 text-base font-semibold text-ink sm:mt-3 sm:text-lg">
+                    {s.title}
+                  </h3>
                   <p className="mt-2 text-sm leading-relaxed text-stone">{s.text}</p>
                 </div>
               </Reveal>
             ))}
           </div>
           <Reveal delay={150}>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <div className="mt-8 flex flex-col items-stretch gap-2.5 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-3">
               <a
                 href={wa('Hi Ring Nepal, I want to place an order!')}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#1ebe57]"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#1ebe57]"
               >
                 <MessageCircle className="size-4" />
                 Start WhatsApp order
@@ -442,7 +460,7 @@ export function HomeSections() {
                 href={brand.daraz}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-white px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-pink hover:text-pink"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-ink/15 bg-white px-6 py-3.5 text-sm font-semibold text-ink transition-colors hover:border-pink hover:text-pink"
               >
                 Shop on Daraz
               </a>
@@ -451,10 +469,13 @@ export function HomeSections() {
         </div>
       </section>
 
-      <section id="collections" className="bg-white px-5 py-16 md:px-8 md:py-20">
+      <section
+        id="collections"
+        className="bg-white px-4 py-12 sm:px-5 sm:py-16 md:px-8 md:py-20"
+      >
         <div className="mx-auto max-w-7xl">
           <Reveal>
-            <div className="mb-10 text-center">
+            <div className="mb-8 text-center sm:mb-10">
               <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-pink">
                 Collections
               </p>
@@ -467,7 +488,7 @@ export function HomeSections() {
               </p>
             </div>
           </Reveal>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-3">
             {categories.map((cat, i) => (
               <Reveal key={cat.id} delay={i * 60}>
                 <CategoryCard
@@ -489,25 +510,28 @@ export function HomeSections() {
         </div>
       </section>
 
-      <section id="story" className="bg-ink px-5 py-16 text-center text-white md:px-8 md:py-20">
+      <section
+        id="story"
+        className="bg-ink px-4 py-12 text-center text-white sm:px-5 sm:py-16 md:px-8 md:py-20"
+      >
         <Reveal>
           <img
             src="/brand/logo-white.png"
             alt={brand.nameNp}
-            className="mx-auto h-24 w-auto md:h-28"
+            className="mx-auto h-20 w-auto sm:h-24 md:h-28"
           />
-          <p className="mt-5 text-xl font-semibold tracking-[0.1em] md:text-2xl">
+          <p className="mt-4 text-lg font-semibold tracking-[0.1em] sm:mt-5 sm:text-xl md:text-2xl">
             {brand.name}
           </p>
-          <p className="mt-2 text-[11px] uppercase tracking-[0.35em] text-pink">
+          <p className="mt-2 text-[10px] uppercase tracking-[0.28em] text-pink sm:text-[11px] sm:tracking-[0.35em]">
             Estd {brand.estd} · {brand.storeCount} stores · {brand.city}
           </p>
-          <p className="mx-auto mt-5 max-w-md text-sm leading-relaxed text-white/65 md:text-base">
+          <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-white/65 sm:mt-5 md:text-base">
             Jewelry, beauty, perfume, gifts & cute finds — same vibe as{' '}
             {brand.instagramHandle}. Browse anytime, order on WhatsApp, or visit
             a store to try pieces in person.
           </p>
-          <div className="mx-auto mt-8 flex max-w-lg flex-wrap items-center justify-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/80">
+          <div className="mx-auto mt-6 flex max-w-lg flex-wrap items-center justify-center gap-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-white/80 sm:mt-8 sm:text-[11px] sm:tracking-[0.14em]">
             <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1.5">
               {brand.storeCount} stores
             </span>
@@ -524,10 +548,13 @@ export function HomeSections() {
         </Reveal>
       </section>
 
-      <section id="stores" className="bg-blush px-5 py-16 md:px-8 md:py-20">
+      <section
+        id="stores"
+        className="bg-blush px-4 py-12 sm:px-5 sm:py-16 md:px-8 md:py-20"
+      >
         <div className="mx-auto max-w-7xl">
           <Reveal>
-            <div className="mb-10 text-center">
+            <div className="mb-8 text-center sm:mb-10">
               <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-pink">
                 Visit us
               </p>
@@ -540,10 +567,10 @@ export function HomeSections() {
               </p>
             </div>
           </Reveal>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-2.5 sm:grid-cols-2 sm:gap-3 lg:grid-cols-4">
             {stores.map((s, i) => (
               <Reveal key={s.id} delay={i * 40}>
-                <div className="flex h-full flex-col rounded-2xl border border-line bg-white p-4 transition-colors hover:border-pink/30">
+                <div className="flex h-full flex-col rounded-2xl border border-line bg-white p-3.5 transition-colors sm:p-4 hover:border-pink/30">
                   <div className="flex items-start gap-2">
                     <MapPin className="mt-0.5 size-4 shrink-0 text-pink" />
                     <div className="min-w-0 flex-1">
@@ -551,33 +578,33 @@ export function HomeSections() {
                       <p className="mt-0.5 text-xs text-stone">{s.note}</p>
                     </div>
                   </div>
-                  <div className="mt-auto flex flex-wrap gap-2 pt-3">
+                  <div className="mt-auto grid grid-cols-2 gap-2 pt-3">
                     {s.phone ? (
                       <a
                         href={`tel:+977${s.phone.replace(/\D/g, '').replace(/^977/, '')}`}
-                        className="inline-flex items-center gap-1 rounded-full border border-line px-2.5 py-1.5 text-xs font-medium text-ink hover:border-pink/40"
+                        className="inline-flex min-h-10 items-center justify-center gap-1 rounded-full border border-line px-2 py-2 text-xs font-medium text-ink hover:border-pink/40"
                         title="Call store"
                       >
-                        <Phone className="size-3" />
-                        {s.phone}
+                        <Phone className="size-3.5 shrink-0" />
+                        <span className="truncate">Call</span>
                       </a>
                     ) : (
                       <a
                         href={brand.instagram}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center rounded-full border border-line px-2.5 py-1.5 text-xs text-stone"
+                        className="inline-flex min-h-10 items-center justify-center rounded-full border border-line px-2 py-2 text-xs text-stone"
                       >
-                        DM {brand.instagramHandle}
+                        DM
                       </a>
                     )}
                     <a
                       href={wa(buildStoreVisitMessage(s.name, s.note))}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1 rounded-full bg-[#25D366]/12 px-2.5 py-1.5 text-xs font-semibold text-[#128C7E] hover:bg-[#25D366]/20"
+                      className="inline-flex min-h-10 items-center justify-center gap-1 rounded-full bg-[#25D366]/12 px-2 py-2 text-xs font-semibold text-[#128C7E] hover:bg-[#25D366]/20"
                     >
-                      <MessageCircle className="size-3" />
+                      <MessageCircle className="size-3.5 shrink-0" />
                       WhatsApp
                     </a>
                   </div>
@@ -588,8 +615,11 @@ export function HomeSections() {
         </div>
       </section>
 
-      <section id="legal" className="border-t border-line bg-white px-5 py-14 md:px-8">
-        <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-2">
+      <section
+        id="legal"
+        className="border-t border-line bg-white px-4 py-12 sm:px-5 sm:py-14 md:px-8"
+      >
+        <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-2 md:gap-10">
           <div id="privacy">
             <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-pink">
               Privacy
@@ -623,10 +653,19 @@ export function HomeSections() {
         </div>
       </section>
 
-      <footer className="border-t border-line bg-blush px-5 py-12 md:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:items-center md:justify-between">
-          <div className="flex items-center gap-4">
-            <img src="/brand/logo-black.png" alt={brand.name} className="h-12 w-auto" />
+      <footer
+        className="border-t border-line bg-blush px-4 py-10 sm:px-5 sm:py-12 md:px-8"
+        style={{
+          paddingBottom: 'max(2.5rem, calc(env(safe-area-inset-bottom, 0px) + 5rem))',
+        }}
+      >
+        <div className="mx-auto flex max-w-7xl flex-col gap-6 md:flex-row md:items-center md:justify-between md:gap-8">
+          <div className="flex items-center gap-3 sm:gap-4">
+            <img
+              src="/brand/logo-black.png"
+              alt={brand.name}
+              className="h-11 w-auto sm:h-12"
+            />
             <div>
               <p className="text-sm font-medium text-ink">{brand.nameNp}</p>
               <p className="text-xs text-stone">
@@ -634,25 +673,40 @@ export function HomeSections() {
               </p>
             </div>
           </div>
-          <div className="flex flex-wrap gap-4 text-xs font-medium uppercase tracking-[0.14em] text-stone">
-            <a href={brand.instagram} target="_blank" rel="noreferrer" className="hover:text-pink">
+          <div className="flex flex-wrap gap-x-4 gap-y-3 text-xs font-medium uppercase tracking-[0.14em] text-stone">
+            <a
+              href={brand.instagram}
+              target="_blank"
+              rel="noreferrer"
+              className="min-h-10 inline-flex items-center hover:text-pink"
+            >
               Instagram
             </a>
-            <a href={wa('Hi Ring Nepal!')} target="_blank" rel="noreferrer" className="hover:text-pink">
+            <a
+              href={wa('Hi Ring Nepal!')}
+              target="_blank"
+              rel="noreferrer"
+              className="min-h-10 inline-flex items-center hover:text-pink"
+            >
               WhatsApp
             </a>
-            <a href={brand.daraz} target="_blank" rel="noreferrer" className="hover:text-pink">
+            <a
+              href={brand.daraz}
+              target="_blank"
+              rel="noreferrer"
+              className="min-h-10 inline-flex items-center hover:text-pink"
+            >
               Daraz
             </a>
-            <a href="#stores" className="hover:text-pink">
+            <a href="#stores" className="min-h-10 inline-flex items-center hover:text-pink">
               Stores
             </a>
-            <a href="/admin" className="hover:text-pink">
+            <a href="/admin" className="min-h-10 inline-flex items-center hover:text-pink">
               Admin
             </a>
           </div>
         </div>
-        <p className="mx-auto mt-8 max-w-7xl text-xs text-stone/60">
+        <p className="mx-auto mt-6 max-w-7xl text-xs text-stone/60 sm:mt-8">
           © {new Date().getFullYear()} {brand.name} · {brand.instagramHandle}
         </p>
       </footer>
@@ -683,7 +737,7 @@ function FilterChip({
     <button
       type="button"
       onClick={onClick}
-      className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition-colors ${
+      className={`min-h-9 shrink-0 rounded-full px-3.5 py-2 text-xs font-semibold transition-colors active:scale-[0.98] ${
         active
           ? 'bg-ink text-white'
           : 'border border-line bg-blush/50 text-ink hover:border-pink/40'

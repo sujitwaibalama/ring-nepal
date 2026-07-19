@@ -28,15 +28,51 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Avoid iOS zoom on double-tap; keep natural pinch-zoom */
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
     @apply bg-blush font-sans text-ink antialiased;
+    /* Notch / home-indicator safe area for fixed UI */
+    padding-left: env(safe-area-inset-left, 0);
+    padding-right: env(safe-area-inset-right, 0);
+  }
+
+  /* Comfortable tap targets on touch devices */
+  @media (pointer: coarse) {
+    button,
+    a,
+    [role='button'],
+    input,
+    select,
+    textarea {
+      touch-action: manipulation;
+    }
   }
 
   ::selection {
     background: color-mix(in srgb, var(--color-pink) 35%, transparent);
   }
+}
+
+/* Hide scrollbar but keep swipe (showreel, chips) */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Sticky bottom bar inside modals (quick view) */
+.safe-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+}
+
+.safe-fab {
+  bottom: max(1.25rem, calc(env(safe-area-inset-bottom, 0px) + 0.75rem));
+  right: max(1.25rem, calc(env(safe-area-inset-right, 0px) + 0.75rem));
 }
 
 /* Scroll reveal */

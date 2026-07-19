@@ -19,7 +19,7 @@ export function CategoryCard({
   href = '#featured',
   active,
 }: CategoryCardProps) {
-  const className = `group relative block aspect-[4/5] overflow-hidden rounded-3xl bg-mist ring-2 transition-all ${
+  const className = `group relative block aspect-[4/5] overflow-hidden rounded-2xl bg-mist ring-2 transition-all sm:rounded-3xl ${
     active ? 'ring-pink shadow-md' : 'ring-transparent hover:ring-pink/30'
   }`
 
@@ -31,13 +31,13 @@ export function CategoryCard({
         className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/15 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 p-5">
-        <p className="font-script text-3xl text-white">{name}</p>
-        <p className="mt-1 text-xs uppercase tracking-[0.16em] text-white/75">
+      <div className="absolute inset-x-0 bottom-0 p-3 sm:p-5">
+        <p className="font-script text-2xl text-white sm:text-3xl">{name}</p>
+        <p className="mt-0.5 line-clamp-2 text-[10px] uppercase tracking-[0.12em] text-white/75 sm:mt-1 sm:text-xs sm:tracking-[0.16em]">
           {blurb}
         </p>
         {onSelect && (
-          <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-pink">
+          <p className="mt-1.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-pink sm:mt-2 sm:text-[10px] sm:tracking-[0.14em]">
             {active ? 'Showing now' : 'Tap to shop'}
           </p>
         )}

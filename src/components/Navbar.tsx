@@ -48,22 +48,34 @@ export function Navbar() {
     }
   }, [open])
 
-  const onHero = !scrolled
+  // Close menu on hash navigation / resize to desktop
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 768) setOpen(false)
+    }
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
+
+  const onHero = !scrolled && !open
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'border-b border-line bg-white/95 shadow-sm backdrop-blur-md'
-          : 'border-b border-transparent bg-transparent'
+        open
+          ? 'border-b border-line bg-white shadow-sm'
+          : scrolled
+            ? 'border-b border-line bg-white/95 shadow-sm backdrop-blur-md'
+            : 'border-b border-transparent bg-transparent'
       }`}
+      style={{ paddingTop: 'env(safe-area-inset-top, 0px)' }}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 md:px-8 md:py-3.5">
-        <a href="#" className="flex items-center gap-2">
+      <div className="relative z-50 mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-5 md:px-8 md:py-3.5">
+        <a href="#" className="flex min-h-11 min-w-11 items-center gap-2">
           <img
             src={onHero ? '/brand/logo-white.png' : '/brand/logo-black.png'}
             alt={`${brand.nameNp} — Estd ${brand.estd}`}
-            className="h-11 w-auto transition-opacity md:h-12"
+            className="h-10 w-auto transition-opacity sm:h-11 md:h-12"
           />
         </a>
 
@@ -103,48 +115,89 @@ export function Navbar() {
           </a>
         </nav>
 
-        <button
-          type="button"
-          className={`rounded-full border p-2.5 md:hidden ${
-            onHero ? 'border-white/30 text-white' : 'border-ink/15 text-ink'
-          }`}
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X className="size-5" /> : <Menu className="size-5" />}
-        </button>
+        {/* Mobile: quick WhatsApp + menu */}
+        <div className="flex items-center gap-2 md:hidden">
+          <a
+            href={wa('Hi Ring Nepal, I want to shop!')}
+            target="_blank"
+            rel="noreferrer"
+            className={`inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border transition-colors ${
+              onHero
+                ? 'border-white/30 bg-white/10 text-white'
+                : 'border-[#25D366]/30 bg-[#25D366]/10 text-[#128C7E]'
+            }`}
+            aria-label="WhatsApp order"
+          >
+            <MessageCircle className="size-5" />
+          </a>
+          <button
+            type="button"
+            className={`inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border transition-colors ${
+              open || !onHero
+                ? 'border-ink/15 text-ink'
+                : 'border-white/30 text-white'
+            }`}
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X className="size-5" /> : <Menu className="size-5" />}
+          </button>
+        </div>
       </div>
 
+      {/* Full-screen mobile drawer */}
       {open && (
-        <div className="border-t border-line bg-white px-5 py-4 shadow-xl md:hidden">
-          <div className="flex flex-col gap-1">
-            {links.map((link) => (
+        <div
+          className="fixed inset-0 top-0 z-40 flex flex-col bg-white md:hidden"
+          style={{ paddingTop: 'calc(3.75rem + env(safe-area-inset-top, 0px))' }}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site menu"
+        >
+          <nav className="flex flex-1 flex-col overflow-y-auto px-5 pb-6 pt-2">
+            <div className="flex flex-col gap-0.5">
+              {links.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="rounded-2xl px-4 py-4 text-base font-semibold uppercase tracking-[0.12em] text-ink transition-colors active:bg-blush-deep"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+
+            <div className="mt-auto space-y-3 pt-8">
               <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-3 text-sm font-medium uppercase tracking-[0.14em] text-ink transition-colors hover:bg-blush-deep"
+                href={wa('Hi Ring Nepal, I want to shop!')}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-full bg-[#25D366] px-4 py-3.5 text-sm font-semibold text-white active:bg-[#1ebe57]"
               >
-                {link.label}
+                <MessageCircle className="size-5" />
+                Order on WhatsApp
               </a>
-            ))}
-            <a
-              href={wa('Hi Ring Nepal, I want to shop!')}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-4 py-3 text-sm font-semibold text-white hover:bg-[#1ebe57]"
-            >
-              <MessageCircle className="size-4" />
-              WhatsApp
-            </a>
-            <Link
-              to="/admin"
-              onClick={() => setOpen(false)}
-              className="mt-1 text-center text-xs text-stone"
-            >
-              Admin
-            </Link>
-          </div>
+              <a
+                href={brand.instagram}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setOpen(false)}
+                className="inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-full border border-line bg-blush/60 px-4 py-3.5 text-sm font-semibold text-ink active:bg-blush-deep"
+              >
+                <InstagramIcon className="size-4" />
+                {brand.instagramHandle}
+              </a>
+              <Link
+                to="/admin"
+                onClick={() => setOpen(false)}
+                className="block py-2 text-center text-xs text-stone"
+              >
+                Admin
+              </Link>
+            </div>
+          </nav>
         </div>
       )}
     </header>
