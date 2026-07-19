@@ -84,11 +84,11 @@ export function MediaDropzone({
           setDragging(false)
         }}
         onDrop={onDrop}
-        className={`relative flex cursor-pointer flex-col items-center justify-center overflow-hidden rounded-2xl border-2 border-dashed transition-colors ${
+        className={`relative flex cursor-pointer flex-col items-center justify-center overflow-hidden rounded-2xl border-2 border-dashed transition-[border-color,background-color,transform,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] active:scale-[0.99] ${
           dragging
-            ? 'border-pink bg-pink/10'
+            ? 'border-pink bg-pink/10 shadow-sm'
             : 'border-line bg-blush/40 hover:border-pink/50 hover:bg-blush'
-        } ${isVideo ? 'min-h-[160px] aspect-video' : 'aspect-square min-h-[120px]'}`}
+        } ${isVideo ? 'min-h-[140px] aspect-video sm:min-h-[160px]' : 'aspect-square min-h-[140px] sm:min-h-[120px]'}`}
       >
         {busy ? (
           <div className="flex flex-col items-center gap-2 text-stone">
@@ -114,8 +114,8 @@ export function MediaDropzone({
               />
             )}
             <div className="absolute inset-0 flex items-end justify-center bg-gradient-to-t from-ink/70 to-transparent p-3">
-              <span className="rounded-full bg-white/95 px-3 py-1.5 text-[11px] font-semibold text-ink">
-                Drop or click to replace
+              <span className="rounded-full bg-white/95 px-3 py-2 text-[11px] font-semibold text-ink sm:py-1.5">
+                Tap to replace
               </span>
             </div>
           </>
@@ -127,9 +127,11 @@ export function MediaDropzone({
               <ImagePlus className="size-8 text-pink" />
             )}
             <p className="text-sm font-medium text-ink">
-              Drag & drop {isVideo ? 'video' : 'image'} here
+              Tap to add {isVideo ? 'video' : 'photo'}
             </p>
-            <p className="text-xs">or click to choose from your files</p>
+            <p className="hidden text-xs sm:block">
+              or drag & drop from your computer
+            </p>
             <p className="text-[10px] text-stone/80">
               {isVideo ? 'MP4 / WebM · max 25MB' : 'JPG / PNG / WebP · max 4MB'}
             </p>

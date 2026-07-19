@@ -79,6 +79,18 @@
   right: max(1.25rem, calc(env(safe-area-inset-right, 0px) + 0.75rem));
 }
 
+/* Admin inputs — 16px on mobile avoids iOS focus zoom */
+.admin-input {
+  transition:
+    border-color var(--duration-mid) var(--ease-out-soft),
+    box-shadow var(--duration-mid) var(--ease-out-soft),
+    background-color var(--duration-mid) var(--ease-out-soft);
+}
+
+.admin-input:focus {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-pink) 22%, transparent);
+}
+
 /* ——— Premium motion utilities ——— */
 
 /* Scroll reveal: fade + rise + slight scale (calm, not flashy) */
