@@ -1,7 +1,7 @@
 import { useEffect, useId, useState } from 'react'
 import { MapPin, MessageCircle, Truck, X } from 'lucide-react'
 import type { Product, Store } from '../data/types'
-import { getStockStatus } from '../data/types'
+import { EXTERNAL_LINK_PROPS, getStockStatus } from '../data/types'
 import {
   buildOrderMessage,
   type OrderFulfillment,
@@ -181,8 +181,7 @@ export function ProductQuickView({
                 <>
                   <a
                     href={wa(message)}
-                    target="_blank"
-                    rel="noreferrer"
+                    {...EXTERNAL_LINK_PROPS}
                     className="pressable flex w-full min-h-12 items-center justify-center gap-2 rounded-full bg-[#25D366] py-3.5 text-sm font-semibold text-white hover:bg-[#1ebe57]"
                   >
                     <MessageCircle className="size-4" />
@@ -200,8 +199,7 @@ export function ProductQuickView({
                         category: product.meta || undefined,
                       }),
                     )}
-                    target="_blank"
-                    rel="noreferrer"
+                    {...EXTERNAL_LINK_PROPS}
                     className="mt-3 block text-center text-xs font-medium text-stone underline decoration-pink/30 hover:text-pink"
                   >
                     Quick order without options
@@ -222,8 +220,7 @@ export function ProductQuickView({
             <div className="space-y-2">
               <a
                 href={wa(message)}
-                target="_blank"
-                rel="noreferrer"
+                {...EXTERNAL_LINK_PROPS}
                 className="pressable flex w-full min-h-12 items-center justify-center gap-2 rounded-full bg-[#25D366] py-3.5 text-sm font-semibold text-white hover:bg-[#1ebe57]"
               >
                 <MessageCircle className="size-5" />
@@ -241,8 +238,7 @@ export function ProductQuickView({
                     category: product.meta || undefined,
                   }),
                 )}
-                target="_blank"
-                rel="noreferrer"
+                {...EXTERNAL_LINK_PROPS}
                 className="block py-1 text-center text-xs font-medium text-stone"
               >
                 Quick order without options

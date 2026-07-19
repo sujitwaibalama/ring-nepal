@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Menu, MessageCircle, X } from 'lucide-react'
+import { EXTERNAL_LINK_PROPS } from '../data/types'
 import { useCatalog } from '../lib/CatalogContext'
 
 function InstagramIcon({ className }: { className?: string }) {
@@ -95,8 +96,7 @@ export function Navbar() {
           ))}
           <a
             href={brand.instagram}
-            target="_blank"
-            rel="noreferrer"
+            {...EXTERNAL_LINK_PROPS}
             className={`pressable transition-colors duration-300 ${
               onHero ? 'text-white/90 hover:text-pink' : 'text-ink/80 hover:text-pink'
             }`}
@@ -106,8 +106,7 @@ export function Navbar() {
           </a>
           <a
             href={wa('Hi Ring Nepal, I want to shop!')}
-            target="_blank"
-            rel="noreferrer"
+            {...EXTERNAL_LINK_PROPS}
             className="pressable inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white hover:bg-[#1ebe57]"
           >
             <MessageCircle className="size-3.5" />
@@ -119,8 +118,7 @@ export function Navbar() {
         <div className="flex items-center gap-2 md:hidden">
           <a
             href={wa('Hi Ring Nepal, I want to shop!')}
-            target="_blank"
-            rel="noreferrer"
+            {...EXTERNAL_LINK_PROPS}
             className={`pressable inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border ${
               onHero
                 ? 'border-white/30 bg-white/10 text-white'
@@ -176,8 +174,7 @@ export function Navbar() {
             >
               <a
                 href={wa('Hi Ring Nepal, I want to shop!')}
-                target="_blank"
-                rel="noreferrer"
+                {...EXTERNAL_LINK_PROPS}
                 className="pressable inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-full bg-[#25D366] px-4 py-3.5 text-sm font-semibold text-white hover:bg-[#1ebe57]"
               >
                 <MessageCircle className="size-5" />
@@ -185,8 +182,7 @@ export function Navbar() {
               </a>
               <a
                 href={brand.instagram}
-                target="_blank"
-                rel="noreferrer"
+                {...EXTERNAL_LINK_PROPS}
                 onClick={() => setOpen(false)}
                 className="pressable inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-full border border-line bg-blush/60 px-4 py-3.5 text-sm font-semibold text-ink hover:bg-blush-deep"
               >

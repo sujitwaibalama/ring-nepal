@@ -1,5 +1,5 @@
 import { defaultCatalog } from '../data/defaultCatalog'
-import type { Catalog, Product } from '../data/types'
+import { normalizeBrandLinks, type Catalog, type Product } from '../data/types'
 
 const STORAGE_KEY = 'ringnepal_catalog_v1'
 const AUTH_KEY = 'ringnepal_admin_auth'
@@ -54,7 +54,7 @@ function normalizeProduct(p: Partial<Product>, defaults: Catalog): Product {
 
 function normalizeCatalog(c: Catalog): Catalog {
   const base = deepCloneCatalog(defaultCatalog)
-  const brand = { ...base.brand, ...c.brand }
+  const brand = normalizeBrandLinks({ ...base.brand, ...c.brand })
   const bestsellers = (c.bestsellers?.length ? c.bestsellers : base.bestsellers).map(
     (p) => normalizeProduct(p, { ...base, brand }),
   )

@@ -25,9 +25,11 @@ import { isAdminAuthed, setAdminAuthed } from '../lib/catalogStore'
 import { useResolvedMedia } from '../lib/useResolvedMedia'
 import type { Catalog, Product, ShowreelItem, Store } from '../data/types'
 import {
+  EXTERNAL_LINK_PROPS,
   getStockStatus,
   pushActivity,
   uid,
+  waLink,
 } from '../data/types'
 
 type Tab =
@@ -914,7 +916,8 @@ function ProductEditor({
           </button>
           {whatsapp && (
             <a
-              href={`https://wa.me/${whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent(
+              href={waLink(
+                whatsapp,
                 buildOrderMessage({
                   name: p.name,
                   price: p.price,
@@ -924,9 +927,8 @@ function ProductEditor({
                   sku: p.sku || undefined,
                   category: p.meta || undefined,
                 }),
-              )}`}
-              target="_blank"
-              rel="noreferrer"
+              )}
+              {...EXTERNAL_LINK_PROPS}
               className="min-h-9 text-[11px] font-semibold text-pink-deep hover:underline"
             >
               Test order link →

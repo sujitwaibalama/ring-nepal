@@ -9,7 +9,7 @@ import {
   X,
 } from 'lucide-react'
 import type { Product } from '../data/types'
-import { getStockStatus } from '../data/types'
+import { EXTERNAL_LINK_PROPS, getStockStatus, telHref } from '../data/types'
 import { useCatalog } from '../lib/CatalogContext'
 import {
   buildOrderMessage,
@@ -132,8 +132,7 @@ export function HomeSections() {
                   href={wa(
                     'Hi Ring Nepal, show me your newest arrivals please!',
                   )}
-                  target="_blank"
-                  rel="noreferrer"
+                  {...EXTERNAL_LINK_PROPS}
                   className="min-h-10 text-sm font-semibold text-pink transition-colors hover:text-gold-light"
                 >
                   Ask for new drops →
@@ -229,8 +228,7 @@ export function HomeSections() {
                                     note: 'From: New arrivals',
                                   }),
                                 )}
-                                target="_blank"
-                                rel="noreferrer"
+                                {...EXTERNAL_LINK_PROPS}
                                 className="pressable inline-flex min-h-9 w-full items-center justify-center gap-1 rounded-full bg-white px-2.5 py-2 text-[10px] font-semibold uppercase tracking-[0.1em] text-ink hover:bg-pink hover:text-white sm:min-h-0 sm:w-auto sm:gap-1.5 sm:px-3.5 sm:text-[11px]"
                               >
                                 <MessageCircle className="size-3 sm:size-3.5" />
@@ -288,8 +286,7 @@ export function HomeSections() {
               </div>
               <a
                 href={wa('Hi Ring Nepal, show me bestsellers!')}
-                target="_blank"
-                rel="noreferrer"
+                {...EXTERNAL_LINK_PROPS}
                 className="min-h-10 text-sm font-semibold text-pink-deep transition-colors hover:text-pink"
               >
                 Ask on WhatsApp →
@@ -420,8 +417,7 @@ export function HomeSections() {
                                   category: item.meta || undefined,
                                 }),
                               )}
-                              target="_blank"
-                              rel="noreferrer"
+                              {...EXTERNAL_LINK_PROPS}
                               className="pressable inline-flex min-h-9 items-center justify-center gap-1 rounded-full bg-ink px-2 py-2 text-[10px] font-semibold uppercase tracking-[0.08em] text-white hover:bg-ink-soft sm:min-h-0 sm:gap-1.5 sm:px-3.5 sm:text-[11px]"
                             >
                               <MessageCircle className="size-3 sm:size-3.5" />
@@ -497,8 +493,7 @@ export function HomeSections() {
             <div className="mt-8 flex flex-col items-stretch gap-2.5 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-3">
               <a
                 href={wa('Hi Ring Nepal, I want to place an order!')}
-                target="_blank"
-                rel="noreferrer"
+                {...EXTERNAL_LINK_PROPS}
                 className="pressable inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-sm font-semibold text-white hover:bg-[#1ebe57]"
               >
                 <MessageCircle className="size-4" />
@@ -506,8 +501,7 @@ export function HomeSections() {
               </a>
               <a
                 href={brand.daraz}
-                target="_blank"
-                rel="noreferrer"
+                {...EXTERNAL_LINK_PROPS}
                 className="pressable inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-ink/15 bg-white px-6 py-3.5 text-sm font-semibold text-ink hover:border-pink hover:text-pink"
               >
                 Shop on Daraz
@@ -629,7 +623,7 @@ export function HomeSections() {
                   <div className="mt-auto grid grid-cols-2 gap-2 pt-3">
                     {s.phone ? (
                       <a
-                        href={`tel:+977${s.phone.replace(/\D/g, '').replace(/^977/, '')}`}
+                        href={telHref(s.phone)}
                         className="pressable inline-flex min-h-10 items-center justify-center gap-1 rounded-full border border-line px-2 py-2 text-xs font-medium text-ink hover:border-pink/40"
                         title="Call store"
                       >
@@ -639,8 +633,7 @@ export function HomeSections() {
                     ) : (
                       <a
                         href={brand.instagram}
-                        target="_blank"
-                        rel="noreferrer"
+                        {...EXTERNAL_LINK_PROPS}
                         className="pressable inline-flex min-h-10 items-center justify-center rounded-full border border-line px-2 py-2 text-xs text-stone"
                       >
                         DM
@@ -648,8 +641,7 @@ export function HomeSections() {
                     )}
                     <a
                       href={wa(buildStoreVisitMessage(s.name, s.note))}
-                      target="_blank"
-                      rel="noreferrer"
+                      {...EXTERNAL_LINK_PROPS}
                       className="pressable inline-flex min-h-10 items-center justify-center gap-1 rounded-full bg-[#25D366]/12 px-2 py-2 text-xs font-semibold text-[#128C7E] hover:bg-[#25D366]/20"
                     >
                       <MessageCircle className="size-3.5 shrink-0" />
@@ -724,24 +716,21 @@ export function HomeSections() {
           <div className="flex flex-wrap gap-x-4 gap-y-3 text-xs font-medium uppercase tracking-[0.14em] text-stone">
             <a
               href={brand.instagram}
-              target="_blank"
-              rel="noreferrer"
+              {...EXTERNAL_LINK_PROPS}
               className="min-h-10 inline-flex items-center hover:text-pink"
             >
               Instagram
             </a>
             <a
               href={wa('Hi Ring Nepal!')}
-              target="_blank"
-              rel="noreferrer"
+              {...EXTERNAL_LINK_PROPS}
               className="min-h-10 inline-flex items-center hover:text-pink"
             >
               WhatsApp
             </a>
             <a
               href={brand.daraz}
-              target="_blank"
-              rel="noreferrer"
+              {...EXTERNAL_LINK_PROPS}
               className="min-h-10 inline-flex items-center hover:text-pink"
             >
               Daraz

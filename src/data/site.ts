@@ -12,7 +12,7 @@ export const brand = {
   storeCount: 8,
   instagram: 'https://www.instagram.com/rings.nepal/',
   instagramHandle: '@rings.nepal',
-  daraz: 'https://s.daraz.com.np/s.ZV5Vm',
+  daraz: 'https://www.daraz.com.np/shop/ghoptohs',
   /** Main sales line (New Baneshwor from Instagram bio) */
   whatsapp: '9779823770857',
   deliveryNote:

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { ArrowRight, ChevronDown, MapPin } from 'lucide-react'
+import { EXTERNAL_LINK_PROPS } from '../data/types'
 import { useCatalog } from '../lib/CatalogContext'
 import { useScrollY } from '../hooks/useParallax'
 
@@ -88,8 +89,7 @@ export function Hero() {
             </a>
             <a
               href={wa('Hi Ring Nepal, I want to shop!')}
-              target="_blank"
-              rel="noreferrer"
+              {...EXTERNAL_LINK_PROPS}
               className="pressable inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/35 bg-white/10 px-6 py-3.5 text-sm font-medium text-white backdrop-blur-sm hover:bg-white/20"
             >
               WhatsApp order

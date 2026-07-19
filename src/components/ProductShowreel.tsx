@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { MessageCircle } from 'lucide-react'
+import { EXTERNAL_LINK_PROPS } from '../data/types'
 import { useCatalog } from '../lib/CatalogContext'
 import { buildOrderMessage } from '../lib/orderMessage'
 import { useResolvedMedia } from '../lib/useResolvedMedia'
@@ -123,8 +124,7 @@ function ShowreelCard({
             <p className="text-sm font-semibold text-white/95">{price}</p>
             <a
               href={waHref}
-              target="_blank"
-              rel="noreferrer"
+              {...EXTERNAL_LINK_PROPS}
               className="pressable inline-flex min-h-10 items-center gap-1.5 rounded-full bg-ink px-3.5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-white hover:bg-ink-soft"
             >
               <MessageCircle className="size-3.5" />

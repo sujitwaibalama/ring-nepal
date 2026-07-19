@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { MessageCircle } from 'lucide-react'
+import { EXTERNAL_LINK_PROPS } from '../data/types'
 import { useCatalog } from '../lib/CatalogContext'
 
 /** Always-visible mobile/desktop shortcut — cuts scroll friction to order */
@@ -35,8 +36,7 @@ export function WhatsAppFab() {
   return (
     <a
       href={wa('Hi Ring Nepal, I want to shop!')}
-      target="_blank"
-      rel="noreferrer"
+      {...EXTERNAL_LINK_PROPS}
       className={`safe-fab pressable fixed z-40 inline-flex min-h-12 items-center gap-2 rounded-full bg-[#25D366] px-4 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#25D366]/35 hover:bg-[#1ebe57] md:bottom-8 md:right-8 ${
         ready ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'
       }`}

@@ -13,7 +13,8 @@ export const defaultCatalog: Catalog = {
     storeCount: 8,
     instagram: 'https://www.instagram.com/rings.nepal/',
     instagramHandle: '@rings.nepal',
-    daraz: 'https://s.daraz.com.np/s.ZV5Vm',
+    /** Permanent shop page (short s.daraz links can expire) */
+    daraz: 'https://www.daraz.com.np/shop/ghoptohs',
     whatsapp: '9779823770857',
     deliveryNote:
       'Kathmandu Valley 2–3 days · COD available · All-Nepal delivery on request',
