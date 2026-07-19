@@ -40,19 +40,7 @@ export function HomeSections() {
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
     return products.filter((p) => {
-      if (category) {
-        // Exact category match only (word-level).
-        // Never use substring includes — "earrings" contains "rings" and mixed results.
-        const cat = category.trim().toLowerCase()
-        const meta = p.meta.trim().toLowerCase()
-        const catFirst = cat.split(/[\s&/,+]+/).filter(Boolean)[0] ?? cat
-        const metaFirst = meta.split(/[\s&/,+]+/).filter(Boolean)[0] ?? meta
-        const match =
-          meta === cat ||
-          // e.g. "Bracelets" ↔ "Bracelets & more" (same first word, full word only)
-          (catFirst.length >= 3 && metaFirst === catFirst)
-        if (!match) return false
-      }
+      if (category && !matchesCategory(p, category)) return false
       if (!q) return true
       return (
         p.name.toLowerCase().includes(q) ||
@@ -68,10 +56,32 @@ export function HomeSections() {
     document.getElementById('featured')?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  /** Toggle category chip (shared by New + Bestsellers) */
+  function toggleCategory(name: string | null) {
+    if (!name) {
+      setCategory(null)
+      return
+    }
+    setCategory(
+      category?.toLowerCase() === name.toLowerCase() ? null : name,
+    )
+  }
+
+  function jumpToFullCategory(name: string) {
+    setCategory(name)
+    setQuery('')
+    document.getElementById('featured')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   const newArrivals = useMemo(
     () => products.filter((p) => p.isNew),
     [products],
   )
+
+  const filteredNew = useMemo(() => {
+    if (!category) return newArrivals
+    return newArrivals.filter((p) => matchesCategory(p, category))
+  }, [newArrivals, category])
 
   return (
     <>
@@ -104,7 +114,7 @@ export function HomeSections() {
         >
           <div className="mx-auto max-w-7xl">
             <Reveal>
-              <div className="mb-6 flex flex-col items-start justify-between gap-3 sm:mb-8 md:flex-row md:items-end">
+              <div className="mb-5 flex flex-col items-start justify-between gap-3 sm:mb-6 md:flex-row md:items-end">
                 <div>
                   <p className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.3em] text-pink">
                     <Sparkles className="size-3.5" />
@@ -115,8 +125,7 @@ export function HomeSections() {
                   </h2>
                   <p className="mt-2 max-w-lg text-sm text-white/65">
                     Fresh pieces without walking to the store or scrolling endless
-                    Instagram posts. Tap to order on WhatsApp — stock updates
-                    live.
+                    Instagram posts. Pick a type below — or order on WhatsApp.
                   </p>
                 </div>
                 <a
@@ -132,83 +141,128 @@ export function HomeSections() {
               </div>
             </Reveal>
 
-            {/* 2-col mobile grid = Instagram-style browse density */}
-            <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-3">
-              {newArrivals.map((item, i) => {
-                const out =
-                  showStock &&
-                  item.trackStock &&
-                  getStockStatus(item) === 'out'
-                return (
-                  <Reveal key={item.id} delay={i * 50}>
-                    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition-all sm:rounded-3xl hover:-translate-y-1 hover:bg-white/10">
-                      <button
-                        type="button"
-                        onClick={() => setQuickView(item)}
-                        className="relative block w-full aspect-[4/5] overflow-hidden bg-ink-soft text-left"
-                      >
-                        <ResolvedCover
-                          src={item.image}
-                          alt={item.name}
-                          className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                        />
-                        <div className="absolute left-2 top-2 flex flex-wrap gap-1 sm:left-3 sm:top-3 sm:gap-1.5">
-                          <span className="rounded-full bg-pink px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-white shadow-sm sm:px-2.5 sm:py-1 sm:text-[10px]">
-                            New
-                          </span>
-                          <StockBadge product={item} show={showStock} />
-                        </div>
-                      </button>
-                      <div className="flex flex-1 flex-col p-2.5 sm:p-5">
-                        <p className="truncate text-[9px] font-semibold uppercase tracking-[0.16em] text-pink sm:text-[10px] sm:tracking-[0.2em]">
-                          {item.meta}
-                        </p>
-                        <h3 className="mt-0.5 line-clamp-2 text-sm font-medium leading-snug text-white sm:mt-1 sm:text-lg">
-                          <button
-                            type="button"
-                            onClick={() => setQuickView(item)}
-                            className="text-left hover:text-pink"
-                          >
-                            {item.name}
-                          </button>
-                        </h3>
-                        <div className="mt-auto flex flex-col gap-2 pt-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:pt-4">
-                          <p className="text-xs font-semibold text-white/95 sm:text-sm">
-                            {item.price}
-                          </p>
-                          {out ? (
-                            <span className="rounded-full bg-white/10 px-2.5 py-1.5 text-center text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 sm:px-3.5 sm:py-2 sm:text-[11px]">
-                              Sold out
-                            </span>
-                          ) : (
-                            <a
-                              href={wa(
-                                buildOrderMessage({
-                                  name: item.name,
-                                  price: item.price,
-                                  stock: item.stock,
-                                  trackStock: showStock && item.trackStock,
-                                  image: item.image,
-                                  sku: item.sku || undefined,
-                                  category: item.meta || undefined,
-                                  note: 'From: New arrivals',
-                                }),
-                              )}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="inline-flex min-h-9 w-full items-center justify-center gap-1 rounded-full bg-white px-2.5 py-2 text-[10px] font-semibold uppercase tracking-[0.1em] text-ink transition-colors hover:bg-pink hover:text-white sm:min-h-0 sm:w-auto sm:gap-1.5 sm:px-3.5 sm:text-[11px]"
-                            >
-                              <MessageCircle className="size-3 sm:size-3.5" />
-                              Order
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    </article>
-                  </Reveal>
-                )
-              })}
+            {/* Category chips — filter new drops without scrolling to bestsellers */}
+            <div className="mb-5 sm:mb-6">
+              <div className="no-scrollbar -mx-1 flex gap-2 overflow-x-auto px-1 pb-1 sm:flex-wrap sm:overflow-visible">
+                <FilterChip
+                  label="All"
+                  active={!category}
+                  onClick={() => toggleCategory(null)}
+                  dark
+                />
+                {categoryNames.map((name) => (
+                  <FilterChip
+                    key={`new-${name}`}
+                    label={name}
+                    active={category?.toLowerCase() === name.toLowerCase()}
+                    onClick={() => toggleCategory(name)}
+                    dark
+                  />
+                ))}
+              </div>
+              <p className="mt-2 text-[11px] text-white/50">
+                {category
+                  ? `${filteredNew.length} new in ${category}`
+                  : `${newArrivals.length} new arrivals`}
+              </p>
             </div>
+
+            {filteredNew.length > 0 ? (
+              <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-3">
+                {filteredNew.map((item, i) => {
+                  const out =
+                    showStock &&
+                    item.trackStock &&
+                    getStockStatus(item) === 'out'
+                  return (
+                    <Reveal key={item.id} delay={i * 50}>
+                      <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition-all sm:rounded-3xl hover:-translate-y-1 hover:bg-white/10">
+                        <button
+                          type="button"
+                          onClick={() => setQuickView(item)}
+                          className="relative block w-full aspect-[4/5] overflow-hidden bg-ink-soft text-left"
+                        >
+                          <ResolvedCover
+                            src={item.image}
+                            alt={item.name}
+                            className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                          />
+                          <div className="absolute left-2 top-2 flex flex-wrap gap-1 sm:left-3 sm:top-3 sm:gap-1.5">
+                            <span className="rounded-full bg-pink px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-white shadow-sm sm:px-2.5 sm:py-1 sm:text-[10px]">
+                              New
+                            </span>
+                            <StockBadge product={item} show={showStock} />
+                          </div>
+                        </button>
+                        <div className="flex flex-1 flex-col p-2.5 sm:p-5">
+                          <p className="truncate text-[9px] font-semibold uppercase tracking-[0.16em] text-pink sm:text-[10px] sm:tracking-[0.2em]">
+                            {item.meta}
+                          </p>
+                          <h3 className="mt-0.5 line-clamp-2 text-sm font-medium leading-snug text-white sm:mt-1 sm:text-lg">
+                            <button
+                              type="button"
+                              onClick={() => setQuickView(item)}
+                              className="text-left hover:text-pink"
+                            >
+                              {item.name}
+                            </button>
+                          </h3>
+                          <div className="mt-auto flex flex-col gap-2 pt-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:pt-4">
+                            <p className="text-xs font-semibold text-white/95 sm:text-sm">
+                              {item.price}
+                            </p>
+                            {out ? (
+                              <span className="rounded-full bg-white/10 px-2.5 py-1.5 text-center text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 sm:px-3.5 sm:py-2 sm:text-[11px]">
+                                Sold out
+                              </span>
+                            ) : (
+                              <a
+                                href={wa(
+                                  buildOrderMessage({
+                                    name: item.name,
+                                    price: item.price,
+                                    stock: item.stock,
+                                    trackStock: showStock && item.trackStock,
+                                    image: item.image,
+                                    sku: item.sku || undefined,
+                                    category: item.meta || undefined,
+                                    note: 'From: New arrivals',
+                                  }),
+                                )}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex min-h-9 w-full items-center justify-center gap-1 rounded-full bg-white px-2.5 py-2 text-[10px] font-semibold uppercase tracking-[0.1em] text-ink transition-colors hover:bg-pink hover:text-white sm:min-h-0 sm:w-auto sm:gap-1.5 sm:px-3.5 sm:text-[11px]"
+                              >
+                                <MessageCircle className="size-3 sm:size-3.5" />
+                                Order
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      </article>
+                    </Reveal>
+                  )
+                })}
+              </div>
+            ) : (
+              <div className="rounded-2xl border border-white/10 bg-white/5 px-5 py-8 text-center sm:rounded-3xl sm:py-10">
+                <p className="text-sm text-white/70">
+                  No new {category ?? 'items'} this week.
+                </p>
+                <p className="mt-1 text-xs text-white/45">
+                  Browse the full catalog — same category is already selected.
+                </p>
+                {category && (
+                  <button
+                    type="button"
+                    onClick={() => jumpToFullCategory(category)}
+                    className="mt-5 inline-flex min-h-11 items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ink transition-colors hover:bg-pink hover:text-white"
+                  >
+                    See all {category} →
+                  </button>
+                )}
+              </div>
+            )}
           </div>
         </section>
       )}
@@ -261,20 +315,14 @@ export function HomeSections() {
                 <FilterChip
                   label="All"
                   active={!category}
-                  onClick={() => setCategory(null)}
+                  onClick={() => toggleCategory(null)}
                 />
                 {categoryNames.map((name) => (
                   <FilterChip
                     key={name}
                     label={name}
                     active={category?.toLowerCase() === name.toLowerCase()}
-                    onClick={() =>
-                      setCategory(
-                        category?.toLowerCase() === name.toLowerCase()
-                          ? null
-                          : name,
-                      )
-                    }
+                    onClick={() => toggleCategory(name)}
                   />
                 ))}
                 {(category || query) && (
@@ -724,23 +772,43 @@ export function HomeSections() {
   )
 }
 
+/** Word-level category match — never substring ("earrings" must not match "rings") */
+function matchesCategory(product: Product, category: string): boolean {
+  const cat = category.trim().toLowerCase()
+  const meta = product.meta.trim().toLowerCase()
+  const catFirst = cat.split(/[\s&/,+]+/).filter(Boolean)[0] ?? cat
+  const metaFirst = meta.split(/[\s&/,+]+/).filter(Boolean)[0] ?? meta
+  return (
+    meta === cat ||
+    (catFirst.length >= 3 && metaFirst === catFirst)
+  )
+}
+
 function FilterChip({
   label,
   active,
   onClick,
+  dark = false,
 }: {
   label: string
   active: boolean
   onClick: () => void
+  /** Dark section (New arrivals on black) */
+  dark?: boolean
 }) {
+  const idle = dark
+    ? 'border border-white/20 bg-white/5 text-white/85 hover:border-pink/50 hover:bg-white/10'
+    : 'border border-line bg-blush/50 text-ink hover:border-pink/40'
+  const on = dark
+    ? 'bg-white text-ink'
+    : 'bg-ink text-white'
+
   return (
     <button
       type="button"
       onClick={onClick}
       className={`min-h-9 shrink-0 rounded-full px-3.5 py-2 text-xs font-semibold transition-colors active:scale-[0.98] ${
-        active
-          ? 'bg-ink text-white'
-          : 'border border-line bg-blush/50 text-ink hover:border-pink/40'
+        active ? on : idle
       }`}
     >
       {label}
